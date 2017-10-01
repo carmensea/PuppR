@@ -1,13 +1,24 @@
-import React from 'react';
-import { View, AppRegistry } from 'react-native';
-import Header from './src/components/Axios';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
+import React, { Component } from 'react';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+import Form from './src/components/Form';
 import DogList from './src/components/DogList';
 
-const App = () => (
+const frontEnd = () => (
   <View>
-    <Header />
-    <DogList />
+    <Form />
   </View>
-);
+  );
 
-AppRegistry.registerComponent('frontEnd', () => App);
+AppRegistry.registerComponent('frontEnd', () => frontEnd);
+
