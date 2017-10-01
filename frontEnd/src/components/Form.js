@@ -34,6 +34,7 @@ render(){
         <Picker style={styles.containerStyle}
           selectedValue={this.state.age}
           onValueChange={(itemValue, itemIndex) => this.setState({age:itemValue})}>
+          <Picker.Item label="Baby" value="baby" />
           <Picker.Item label="Young" value="young" />
           <Picker.Item label="Adult" value="adult" />
           <Picker.Item label="Senior" value="senior" />
