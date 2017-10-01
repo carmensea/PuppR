@@ -11,9 +11,12 @@ import {
   Text,
   View
 } from 'react-native';
+import Form from './src/components/Form';
 
 const frontEnd = () => (
-  <Text>Hello World</Text>
+  <View>
+    <Form />
+  </View>
   );
 
 AppRegistry.registerComponent('frontEnd', () => frontEnd);
