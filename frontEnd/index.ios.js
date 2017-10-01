@@ -5,12 +5,20 @@ import ShowDogList from './src/components/ShowDogList';
 import CarouselExample from './src/components/ShowCarousel';
 import Button from './src/components/ShowButton';
 
-const App = () => (
+import React, { Component } from 'react';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+import Form from './src/components/Form';
+import DogList from './src/components/DogList';
+
+const frontEnd = () => (
   <View>
-    <Header headerText={'PuppR'} />
-    <CarouselExample />
-
+    <Form />
   </View>
-);
+  );
 
-AppRegistry.registerComponent('frontEnd', () => App);
+AppRegistry.registerComponent('frontEnd', () => frontEnd);
