@@ -7,6 +7,7 @@ import {
 import Carousel from 'react-native-looped-carousel';
 import ShowDogDetail from './ShowDogDetail';
 import Button from './ShowButton';
+import { Actions } from 'react-native-router-flux';
 
 const allThemDogs = [
   dog1 = {

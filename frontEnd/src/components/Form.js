@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, Picker, Button, TextInput } from 'react-native';
 //import axios!
+import { Actions } from 'react-native-router-flux';
+import axios from 'axios';
 
 class Form extends Component {
   constructor(props){
@@ -12,6 +14,13 @@ class Form extends Component {
       location: ''
     };
   };
+
+  dogSearcher = () => {
+    axios.get('http://localhost:3000/petfinder/index')
+    .then(
+      (console.log("the"))
+    )
+  }
 
 render(){
   return(
@@ -34,6 +43,7 @@ render(){
         <Picker style={styles.containerStyle}
           selectedValue={this.state.age}
           onValueChange={(itemValue, itemIndex) => this.setState({age:itemValue})}>
+          <Picker.Item label="Baby" value="baby" />
           <Picker.Item label="Young" value="young" />
           <Picker.Item label="Adult" value="adult" />
           <Picker.Item label="Senior" value="senior" />
@@ -47,10 +57,10 @@ render(){
         </Picker>
       </View>
 
-      <Button title="Submit" onPress={() => console.log(this.state)}/>
+      <Button title="Submit" onPress={() => Actions.flip()}/>
     </View>
     )
-};
+  };
 
 };
 
