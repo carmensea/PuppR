@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Text, View, Picker, Button, TextInput } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
-//import axios!
+import { Actions } from 'react-native-router-flux';
+import axios from 'axios';
+
 //npm install --save react-native-material-dropdown
+
 
 class Form extends Component {
   constructor(props){
@@ -14,6 +17,13 @@ class Form extends Component {
       location: ''
     };
   };
+
+  dogSearcher = () => {
+    axios.get('http://localhost:3000/petfinder/index')
+    .then(
+      (console.log("the"))
+    )
+  }
 
 render(){
   let sizeData = [{
@@ -70,7 +80,7 @@ render(){
     onChangeText={(value, index, data) => this.setState({gender:value})}
     />
 
-    <Button title="Submit" onPress={() => console.log(this.state)}/>
+    <Button title="Submit" onPress={() => Actions.flip()}/>
 
     </View>
     );
