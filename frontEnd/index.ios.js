@@ -10,6 +10,7 @@ import {
   Text,
   View
 } from 'react-native';
+
 import Form from './src/components/Form';
 import DogList from './src/components/DogList';
 
@@ -18,5 +19,6 @@ const frontEnd = () => (
     <Form />
   </View>
   );
+
 
 AppRegistry.registerComponent('frontEnd', () => frontEnd);

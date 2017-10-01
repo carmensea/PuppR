@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 const Header = (props) => {
+
   const { textStyle, viewStyle } = styles;
 
   return (
@@ -33,3 +34,4 @@ const styles = {
 };
 
 export default Header;
+
