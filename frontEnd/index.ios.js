@@ -12,6 +12,7 @@ import {
   View
 } from 'react-native';
 import Form from './src/components/Form';
+import DogList from './src/components/DogList';
 
 const frontEnd = () => (
   <View>
@@ -20,3 +21,4 @@ const frontEnd = () => (
   );
 
 AppRegistry.registerComponent('frontEnd', () => frontEnd);
+
