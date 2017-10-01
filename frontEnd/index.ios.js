@@ -8,7 +8,7 @@ import Button from './src/components/ShowButton';
 const App = () => (
   <View>
     <Header headerText={'PuppR'} />
-    <CarouselExample test={'test'} />
+    <CarouselExample />
 
   </View>
 );
