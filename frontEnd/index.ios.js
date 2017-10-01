@@ -16,6 +16,7 @@ import DogList from './src/components/DogList';
 
 const frontEnd = () => (
   <View>
+    <Header headerText="PuppR" />
     <Form />
   </View>
   );
