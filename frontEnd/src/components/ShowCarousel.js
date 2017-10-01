@@ -8,6 +8,15 @@ import Carousel from 'react-native-looped-carousel';
 import ShowDogDetail from './ShowDogDetail';
 import Button from './ShowButton';
 
+const allThemDogs = [
+  dog1 = {
+    name: "Otis"
+  },
+  dog2 = {
+    name: "Spot"
+  }
+];
+
 const { width, height } = Dimensions.get('window');
 
 export default class CarouselExample extends Component {
@@ -25,6 +34,19 @@ export default class CarouselExample extends Component {
     this.setState({ size: { width: layout.width, height: 500 } });
   }
 
+  renderDogs() {
+    return allThemDogs.map((dog, i) => {
+      return (
+        <View
+          style={this.state.size}
+          key={i}
+        >
+          <ShowDogDetail dog={dog}/>
+        </View>
+      );
+    });
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }} onLayout={this._onLayoutDidChange}>
@@ -35,18 +57,7 @@ export default class CarouselExample extends Component {
           pageInfo={true}
           onAnimateNextPage={(p) => console.log(p)}
         >
-        <View style={[{ backgroundColor: 'red' }, this.state.size]}>
-          <Button onPress={() => console.log("Left")}/>
-          <Button onPress={() => console.log("Right")}/>
-        </View>
-        <View style={[{ backgroundColor: '#BADA55' }, this.state.size]}>
-          <Button onPress={() => console.log("Left")}/>
-          <Button onPress={() => console.log("Right")}/>
-        </View>
-        <View style={[{ backgroundColor: 'blue' }, this.state.size]}>
-          <Button onPress={() => console.log("Left")}/>
-          <Button onPress={() => console.log("Right")}/>
-        </View>
+          {this.renderDogs()}
         </Carousel>
       </View>
     );
@@ -60,4 +71,16 @@ const styles = {
   }
 };
 
-export default CarouselExample;
+
+{/*}<View style={[{ backgroundColor: 'red' }, this.state.size]}>
+  <Button onPress={() => console.log("Left")}/>
+  <Button onPress={() => console.log("Right")}/>
+</View>
+<View style={[{ backgroundColor: '#BADA55' }, this.state.size]}>
+  <Button onPress={() => console.log("Left")}/>
+  <Button onPress={() => console.log("Right")}/>
+</View>
+<View style={[{ backgroundColor: 'blue' }, this.state.size]}>
+  <Button onPress={() => console.log("Left")}/>
+  <Button onPress={() => console.log("Right")}/>
+</View>*/}
