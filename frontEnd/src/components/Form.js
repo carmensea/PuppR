@@ -4,13 +4,11 @@ import { Dropdown } from 'react-native-material-dropdown';
 import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 
-//npm install --save react-native-material-dropdown
-
-
 class Form extends Component {
   constructor(props){
     super(props);
     this.state = {
+      results: [],
       size: 'S',
       age: 'Young',
       gender: 'F',
@@ -20,10 +18,15 @@ class Form extends Component {
 
   dogSearcher = () => {
     axios.get('http://localhost:3000/petfinder/index')
-    .then(
-      (console.log("the"))
-    )
+    .then(function(response) {
+      this.setState({
+        results: response.data
+      })
+      console.log(this.state.results)
+    })
+    Actions.flip()
   }
+
 
 render(){
   let sizeData = [{
@@ -80,19 +83,16 @@ render(){
     onChangeText={(value, index, data) => this.setState({gender:value})}
     />
 
-    <Button title="Submit" onPress={() => Actions.flip()}/>
+    <Button title="Submit" onPress={() => this.dogSearcher()}/>
 
     </View>
     );
-};
-
+  };
 };
 
 const styles = {
   selectionContainer: {
-
   },
-
   locationContainer: {
     marginTop: 100,
     alignItems: 'center'
@@ -100,7 +100,6 @@ const styles = {
   locationTitle: {
     fontSize: 18
   }
-
 };
 
 export default Form;

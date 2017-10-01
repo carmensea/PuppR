@@ -6,7 +6,7 @@ class PetfinderController < ApplicationController
     # call will be localhost3000
     # need react env
     pets = PetFinderAdapter.new
-    @all_dogs = pets.custom_search
+    render json: pets.custom_search
   end
 
 end
