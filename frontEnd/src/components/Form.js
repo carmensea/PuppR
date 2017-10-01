@@ -80,7 +80,7 @@ render(){
     onChangeText={(value, index, data) => this.setState({gender:value})}
     />
 
-    <Button title="Submit" onPress={() => console.log(this.state)}/>
+    <Button title="Submit" onPress={() => Actions.flip()}/>
 
     </View>
     );
