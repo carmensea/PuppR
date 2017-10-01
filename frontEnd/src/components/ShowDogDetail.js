@@ -4,18 +4,12 @@ import ShowCard from './ShowCard';
 import ShowCardSection from './ShowCardSection';
 
 const ShowDogDetail = ({dog}) => {
-  const { title, artist, thumbnail_image } = dog
+  const { name } = dog
   return (
     <ShowCard>
       <ShowCardSection>
-        <View>
-          {/*<Image
-            source={{ uri: thumbnail_image }}
-          />*/}
-        </View>
         <View style={styles.headContentStyle}>
-          <Text>{title}</Text>
-          <Text>{artist}</Text>
+          <Text>{name}</Text>
         </View>
       </ShowCardSection>
     </ShowCard>
