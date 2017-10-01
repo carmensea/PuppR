@@ -1,8 +1,7 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import Header from './src/components/Header';
+import ShowDogList from './src/components/ShowDogList';
+import CarouselExample from './src/components/ShowCarousel';
+import Button from './src/components/ShowButton';
 
 import React, { Component } from 'react';
 import {
@@ -11,35 +10,15 @@ import {
   Text,
   View
 } from 'react-native';
-import Header from './src/components/Header';
-import DogIndex from './src/components/DogIndex';
 
+import Form from './src/components/Form';
+import DogList from './src/components/DogList';
 
-class frontEnd extends Component {
-  render() {
-    return (
-      <View><Header headerText="Puppr"/><DogIndex /></View>
-    );
-  }
-}
+const frontEnd = () => (
+  <View>
+    <Form />
+  </View>
+  );
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('frontEnd', () => frontEnd);

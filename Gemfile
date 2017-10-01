@@ -20,9 +20,9 @@ gem 'puma', '~> 3.7'
 # gem 'bcrypt', '~> 3.1.7'
 # hide your env
 gem 'dotenv-rails'
-# facebook auth 
-gem 'omniauth-facebook'
-gem 'omniauth'
+gem 'httparty'
+gem 'multi_xml'
+gem 'awesome_print'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
