@@ -1,8 +1,9 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React from 'react';
+import { AppRegistry, View } from 'react-native';
+import Header from './src/components/Header';
+import ShowDogList from './src/components/ShowDogList';
+import CarouselExample from './src/components/ShowCarousel';
+import Button from './src/components/ShowButton';
 
 import React, { Component } from 'react';
 import {
@@ -21,4 +22,3 @@ const frontEnd = () => (
   );
 
 AppRegistry.registerComponent('frontEnd', () => frontEnd);
-
