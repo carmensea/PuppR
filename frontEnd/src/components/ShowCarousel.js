@@ -24,7 +24,7 @@ export default class CarouselExample extends Component {
 
   constructor(props) {
     super(props);
-    console.log(props)
+    console.log(this.props)
 
     this.state = {
       size: { width, height },
@@ -39,7 +39,9 @@ export default class CarouselExample extends Component {
   }
 
   renderDogs() {
-    return allThemDogs.map((dog, i) => {
+    console.log(this.props)
+    console.log(this.props.data)
+    return this.props.data.map((dog, i) => {
       return (
         <View
           style={this.state.size}
