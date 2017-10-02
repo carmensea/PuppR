@@ -13,12 +13,15 @@ import {
 
 import Form from './src/components/Form';
 import DogList from './src/components/DogList';
+import DogIndex from './src/components/DogIndex';
+import ScottShowDogDetail from './src/components/ScottShowDogDetail';
 
 const frontEnd = () => (
   <View>
-    <Form />
-  </View>
-  );
+    <Header headerText="Puppr"/>
+    <ScottShowDogDetail />
+  </View>  
+);
 
 
 AppRegistry.registerComponent('frontEnd', () => frontEnd);
