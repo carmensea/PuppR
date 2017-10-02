@@ -43,13 +43,13 @@ class PetFinderAdapter < ApplicationRecord
 
     def make_dog(hash, shelter)
       dog = {}
-      dog[:name] = hash["name"]
-      dog[:description] = hash["desc"]
-      dog[:age] = hash["age"]
-      dog[:sex] = hash["sex"]
-      dog[:size] = hash["size"]
+      dog[:name] = hash["name"] || "dog has no name"
+      dog[:description] = hash["desc"] || "dog has no description"
+      dog[:age] = hash["age"] || "dog has no age"
+      dog[:sex] = hash["sex"]  || "dog has no sex"
+      dog[:size] = hash["size"]  || "dog has no size"
       dog[:photo] = hash["photo"] || 'https://i.pinimg.com/236x/de/6d/b7/de6db77b18d07e272d112b17f184e6d9--pug-silhouette-pug-tattoo.jpg'
-      dog[:shelter_id] = shelter.id
+      dog[:shelter_id] = shelter.id || "N/A"
       Dog.new(dog)
     end
 
