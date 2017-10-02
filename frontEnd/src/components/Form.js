@@ -19,10 +19,17 @@ class Form extends Component {
   };
 
   dogSearcher = () => {
-    axios.get('http://localhost:3000/petfinder/index')
-    .then(
-      (console.log("the"))
-    )
+    axios.get('http://localhost:3000/petfinder/index',{
+      params:{
+        size: this.state.size,
+        age: this.state.age,
+        gender: this.state.gender,
+        location: this.state.location
+      }
+    })
+    .then(function(response){
+      console.log(response);
+    })
   }
 
 render(){

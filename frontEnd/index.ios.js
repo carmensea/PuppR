@@ -16,24 +16,22 @@ import Form from './src/components/Form';
 import DogList from './src/components/DogList';
 
 const frontEnd = () => (
-  <Router>
-    <Scene key="root">
+    <Router>
+      <Scene key="root">
 
-    <Scene
-      key="form"
-      component={Form}
-      title="Form"
-      initial
-    />
+      <Scene
+        key="form"
+        component={Form}
+        initial
+      />
 
-    <Scene
-      key="flip"
-      component={CarouselExample}
-      title="showDogs"
-    />
+      <Scene
+        key="flip"
+        component={CarouselExample}
+      />
 
-    </Scene>
-  </Router>
+      </Scene>
+    </Router>
   );
 
 
