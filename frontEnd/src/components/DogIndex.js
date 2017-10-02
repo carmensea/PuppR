@@ -1,88 +1,48 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
+import DogDetail from './DogDetail';
 
-const DogIndex = () => {
+class DogIndex extends Component {
   
-  //const { pageHeadlineStyle } = styles;
+  state = { 
+          dogs: [
+                  { name: 'Otis', imageURL: 'https://drpem3xzef3kf.cloudfront.net/photos/pets/39348068/5/?bust=1505079564&amp;width=800' }, 
+                  { name: 'Fido', imageURL: 'https://drpem3xzef3kf.cloudfront.net/photos/pets/39075659/1/?bust=1502575441&amp;width=800' }, 
+                  { name: 'Fluffy', imageURL: 'https://drpem3xzef3kf.cloudfront.net/photos/pets/39532484/1/?bust=1506808019&amp;width=800' }
+          ] 
+  };
 
-  const dog1 = 
-    {
-      name: 'Otis',
-      imageURL: './dog1.jpeg'
-    }
-    
-  const dog2 = 
-    {
-      name: 'Fido',
-      imageURL: './dog2.jpeg'
-    }
-    
-  const dog3 =  
-    {
-      name: 'Fluffy',
-      imageURL: './dog3.jpeg'
-    }
-      
+  // componentWillMount() {
+  //   axios.get('https://rallycoding.herokuapp.com/api/music_albums')
+  //   .then(response => this.setState({ dogs: response.data }));
+  // }
 
-  const styles = {
-    eachDogStyle: { 
-      alignItems: 'flex-start',
-      flexDirection:'row'
-    },
-    eachDogPictureStyle: { 
-      marginLeft: 10,
-      marginBottom: 10
-    },
+  renderDogs() {
+    return this.state.dogs.map(dog => 
+      <DogDetail key={dog.name} dog={dog} />
+    );
+  }
 
+  render() {
+    return (
+      <View>
+        <Text style={styles.pageHeadlineStyle}>Paw-tential Soulmates</Text>
+        <View>{this.renderDogs()}</View>
+      </View>
+    );  
+  }  
+};
+
+const styles = {
     pageHeadlineStyle: { 
       textAlign: 'center',
-      //justifyContent: 'center',
       fontSize: 30,
       alignItems: 'center',
       height: 100,
       paddingTop: 20,
       elevation: 2,
       position: 'relative'
-    },
-    eachDogNameStyle: {
-      paddingLeft: 10,
-      fontSize: 20
-    },
-    eachDogNameContainer: {
-      flex: 15,
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignText: 'center' 
-    }
+    }  
   };
-  
-  return (
-    <View>
-      <Text style={styles.pageHeadlineStyle}>Paw-tential Soulmates</Text>
-      <View style={styles.eachDogStyle}>
-        <View style={styles.eachDogPictureStyle}><Image source={require('./dog1.jpeg')} /></View>
-        <View style={styles.eachDogNameContainer}>
-          <Text style={styles.eachDogNameStyle}>{dog1.name}</Text>      
-        </View>
-      </View>
-      <View style={styles.eachDogStyle}>
-        <View style={styles.eachDogPictureStyle}><Image source={require('./dog2.jpeg')} /></View>
-        <View style={styles.eachDogNameContainer}>
-          <Text style={styles.eachDogNameStyle}>{dog2.name}</Text>      
-        </View>
-      </View>
-      <View style={styles.eachDogStyle}>
-        <View style={styles.eachDogPictureStyle}><Image source={require('./dog3.jpeg')} /></View>
-        <View style={styles.eachDogNameContainer}>
-          <Text style={styles.eachDogNameStyle}>{dog3.name}</Text>      
-        </View>
-      </View>
-    </View>
-  );   
-
-  
-
-
-};
 
 export default DogIndex;
