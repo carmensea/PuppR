@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, Picker, Button, TextInput } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 import { Actions } from 'react-native-router-flux';
+import CarouselExample from './ShowCarousel';
 import axios from 'axios';
 
 class Form extends Component {
@@ -14,17 +15,17 @@ class Form extends Component {
       gender: 'F',
       location: ''
     };
+    this.dogSearcher = this.dogSearcher.bind(this);
   };
 
   dogSearcher = () => {
     axios.get('http://localhost:3000/petfinder/index')
-    .then(function(response) {
+    .then( (response) => {
       this.setState({
         results: response.data
-      })
-      console.log(this.state.results)
-    })
-    Actions.flip()
+      });
+      Actions.flip(dogs =this.state.results);
+    });
   }
 
 

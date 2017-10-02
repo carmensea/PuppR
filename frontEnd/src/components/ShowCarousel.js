@@ -24,10 +24,13 @@ export default class CarouselExample extends Component {
 
   constructor(props) {
     super(props);
+    console.log(props)
 
     this.state = {
       size: { width, height },
+      dogs: this.props.data
     };
+    this.renderDogs = this.renderDogs.bind(this);
   }
 
   _onLayoutDidChange = (e) => {
