@@ -12,14 +12,21 @@ class Form extends Component {
       results: [],
       size: 'S',
       age: 'Young',
-      gender: 'F',
+      sex: 'F',
       location: ''
     };
     this.dogSearcher = this.dogSearcher.bind(this);
   };
 
   dogSearcher = () => {
-    axios.get('http://localhost:3000/petfinder/index')
+    axios.get('http://localhost:3000/petfinder/index', {
+      params: {
+        age: this.state.age,
+        size: this.state.size,
+        sex: this.state.sex,
+        location: this.state.location
+      }
+    })
     .then( (response) => {
       this.setState({
         results: response.data

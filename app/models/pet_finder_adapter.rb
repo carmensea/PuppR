@@ -20,7 +20,7 @@ class PetFinderAdapter < ApplicationRecord
                                 "location" => "#{params['location']}",
                                 "age" => "#{params['age']}",
                                 "size" => "#{params['size']}",
-                                "gender" => "#{params['gender']}",
+                                "sex" => "#{params['sex']}",
                                 "format" => "json"
                                 }
     })
@@ -46,7 +46,7 @@ class PetFinderAdapter < ApplicationRecord
       dog[:name] = hash["name"]
       dog[:description] = hash["desc"]
       dog[:age] = hash["age"]
-      dog[:gender] = hash["gender"]
+      dog[:sex] = hash["sex"]
       dog[:size] = hash["size"]
       dog[:photo] = hash["photo"]
       dog[:shelter_id] = shelter.id
@@ -65,7 +65,7 @@ class PetFinderAdapter < ApplicationRecord
         result = Hash.new
         result["name"] = info["name"]["$t"]
         result["desc"] = info["description"]["$t"]
-        result["gender"] = info["sex"]["$t"]
+        result["sex"] = info["sex"]["$t"]
         result["size"] = info["size"]["$t"]
         result["age"] = info["age"]["$t"]
         result["address"] = info["contact"]["address1"]["$t"]
