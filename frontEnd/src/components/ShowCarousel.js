@@ -9,14 +9,6 @@ import ShowDogDetail from './ShowDogDetail';
 import Button from './ShowButton';
 import { Actions } from 'react-native-router-flux';
 
-const allThemDogs = [
-  dog1 = {
-    name: "Otis"
-  },
-  dog2 = {
-    name: "Spot"
-  }
-];
 
 const { width, height } = Dimensions.get('window');
 
@@ -35,7 +27,7 @@ export default class CarouselExample extends Component {
 
   _onLayoutDidChange = (e) => {
     const layout = e.nativeEvent.layout;
-    this.setState({ size: { width: layout.width, height: 500 } });
+    this.setState({ size: { width: layout.width, height: 500 }});
   }
 
   renderDogs() {
@@ -76,17 +68,3 @@ const styles = {
     justifyContent: 'space-around'
   }
 };
-
-
-{/*}<View style={[{ backgroundColor: 'red' }, this.state.size]}>
-  <Button onPress={() => console.log("Left")}/>
-  <Button onPress={() => console.log("Right")}/>
-</View>
-<View style={[{ backgroundColor: '#BADA55' }, this.state.size]}>
-  <Button onPress={() => console.log("Left")}/>
-  <Button onPress={() => console.log("Right")}/>
-</View>
-<View style={[{ backgroundColor: 'blue' }, this.state.size]}>
-  <Button onPress={() => console.log("Left")}/>
-  <Button onPress={() => console.log("Right")}/>
-</View>*/}
