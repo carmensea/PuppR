@@ -9,10 +9,10 @@ class Form extends Component {
   constructor(props){
     super(props);
     this.state = {
+      size: '',
+      age: '',
+      sex: '',
       results: [],
-      size: 'S',
-      age: 'Young',
-      sex: 'F',
       location: ''
     };
     this.dogSearcher = this.dogSearcher.bind(this);
@@ -31,9 +31,9 @@ class Form extends Component {
       this.setState({
         results: response.data
       });
-      Actions.flip(dogs =this.state.results);
+      Actions.flip(dogs=this.state.results);
     })
-    .catch( error => console.log(error))
+    .catch(error => console.log(error))
   }
 
 
@@ -60,15 +60,20 @@ render(){
     value: 'F',
   }, {
     value: 'M'
-  }]
+  }];
 
 
 
   return (
-    <View>
+    <View style={styles.formContainer}>
       <View style={styles.locationContainer}>
         <Text style={styles.locationTitle}>Find Nearest Shelter</Text>
         <TextInput
+          textAlign="center"
+          keyboardType="numeric"
+          selectionColor="#E9E9EF"
+          animationDuration={5}
+          maxLength={5}
           placeholder="Enter Your Zipcode"
           onChangeText={(location) => this.setState({location})}
         />
@@ -89,12 +94,11 @@ render(){
     <Dropdown
     label='Select Sex'
     data={sexData}
-    onChangeText={(value, index, data) => this.setState({gender:value})}
+    onChangeText={(value, index, data) => this.setState({sex:value})}
     />
 
-    <Button title="Submit" onPress={() => this.dogSearcher()}/>
-
-    </View>
+    <Button title="Submit" color="#D3598E"onPress={() => this.dogSearcher()}/>
+</View>
     );
   };
 };
@@ -107,7 +111,11 @@ const styles = {
     alignItems: 'center'
   },
   locationTitle: {
-    fontSize: 18
+    fontSize: 18,
+    color: '#8ED359'
+  },
+  formContainer: {
+    padding: 20
   }
 };
 
