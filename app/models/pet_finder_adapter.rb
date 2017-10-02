@@ -48,6 +48,7 @@ class PetFinderAdapter < ApplicationRecord
       dog[:age] = hash["age"]
       dog[:gender] = hash["gender"]
       dog[:size] = hash["size"]
+      dog[:photo] = hash["photo"]
       dog[:shelter_id] = shelter.id
       Dog.new(dog)
     end

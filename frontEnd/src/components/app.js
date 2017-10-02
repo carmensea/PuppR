@@ -1,4 +1,5 @@
 import Header from './src/components/Header';
+import ShowDogList from './src/components/ShowDogList';
 import CarouselExample from './src/components/ShowCarousel';
 import Button from './src/components/ShowButton';
 import { Router, Scene } from 'react-native-router-flux';
@@ -13,9 +14,6 @@ import {
 
 import Form from './src/components/Form';
 import DogList from './src/components/DogList';
-import DogIndex from './src/components/DogIndex';
-import ScottShowDogDetail from './src/components/ScottShowDogDetail';
-
 
 const frontEnd = () => (
   <Router>
@@ -37,5 +35,6 @@ const frontEnd = () => (
     </Scene>
   </Router>
   );
+
 
 AppRegistry.registerComponent('frontEnd', () => frontEnd);

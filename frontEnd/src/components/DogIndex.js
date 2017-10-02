@@ -9,8 +9,8 @@ class DogIndex extends Component {
                   { name: 'Otis', imageURL: 'https://drpem3xzef3kf.cloudfront.net/photos/pets/39348068/5/?bust=1505079564&amp;width=800' }, 
                   { name: 'Fido', imageURL: 'https://drpem3xzef3kf.cloudfront.net/photos/pets/39075659/1/?bust=1502575441&amp;width=800' }, 
                   { name: 'Fluffy', imageURL: 'https://drpem3xzef3kf.cloudfront.net/photos/pets/39532484/1/?bust=1506808019&amp;width=800' }
-                ] 
-          };
+          ] 
+  };
 
   // componentWillMount() {
   //   axios.get('https://rallycoding.herokuapp.com/api/music_albums')

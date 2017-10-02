@@ -11,6 +11,8 @@
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.48.4",
 		"react-native-looped-carousel": "^0.1.7",
+		"react-native-router-flux": "^4.0.0-beta.21",
+		"react-native-material-dropdown": "^0.4.2",
 		"react-native-snap-carousel": "^3.2.3"
 	},
 	"devDependencies": {

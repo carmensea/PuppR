@@ -7,15 +7,8 @@ import {
 import Carousel from 'react-native-looped-carousel';
 import ShowDogDetail from './ShowDogDetail';
 import Button from './ShowButton';
+import { Actions } from 'react-native-router-flux';
 
-const allThemDogs = [
-  dog1 = {
-    name: "Otis"
-  },
-  dog2 = {
-    name: "Spot"
-  }
-];
 
 const { width, height } = Dimensions.get('window');
 
@@ -23,19 +16,24 @@ export default class CarouselExample extends Component {
 
   constructor(props) {
     super(props);
+    console.log(this.props)
 
     this.state = {
       size: { width, height },
+      dogs: this.props.data
     };
+    this.renderDogs = this.renderDogs.bind(this);
   }
 
   _onLayoutDidChange = (e) => {
     const layout = e.nativeEvent.layout;
-    this.setState({ size: { width: layout.width, height: 500 } });
+    this.setState({ size: { width: layout.width, height: 500 }});
   }
 
   renderDogs() {
-    return allThemDogs.map((dog, i) => {
+    console.log(this.props)
+    console.log(this.props.data)
+    return this.props.data.map((dog, i) => {
       return (
         <View
           style={this.state.size}
@@ -70,17 +68,3 @@ const styles = {
     justifyContent: 'space-around'
   }
 };
-
-
-{/*}<View style={[{ backgroundColor: 'red' }, this.state.size]}>
-  <Button onPress={() => console.log("Left")}/>
-  <Button onPress={() => console.log("Right")}/>
-</View>
-<View style={[{ backgroundColor: '#BADA55' }, this.state.size]}>
-  <Button onPress={() => console.log("Left")}/>
-  <Button onPress={() => console.log("Right")}/>
-</View>
-<View style={[{ backgroundColor: 'blue' }, this.state.size]}>
-  <Button onPress={() => console.log("Left")}/>
-  <Button onPress={() => console.log("Right")}/>
-</View>*/}
