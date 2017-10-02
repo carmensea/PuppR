@@ -12,7 +12,7 @@ import { Actions } from 'react-native-router-flux';
 
 const { width, height } = Dimensions.get('window');
 
-export default class DogCarousel extends Component {
+export default class CarouselExample extends Component {
 
   constructor(props) {
     super(props);
