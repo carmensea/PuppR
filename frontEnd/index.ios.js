@@ -14,17 +14,6 @@ import {
 import Form from './src/components/Form';
 import DogList from './src/components/DogList';
 
-const allThemDogs = [
-  dog1 = {
-    name: 'Clifford',
-    breed: 'Red Dog'
-  },
-  dog2 = {
-    name: 'Snoopy',
-    breed: 'Beagle'
-  }
-];
-
 
 const frontEnd = () => (
   <Router>
