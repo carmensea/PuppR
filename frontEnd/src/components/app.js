@@ -1,4 +1,5 @@
 import Header from './src/components/Header';
+import ShowDogList from './src/components/ShowDogList';
 import CarouselExample from './src/components/ShowCarousel';
 import Button from './src/components/ShowButton';
 import { Router, Scene } from 'react-native-router-flux';
@@ -14,24 +15,25 @@ import {
 import Form from './src/components/Form';
 import DogList from './src/components/DogList';
 
-
 const frontEnd = () => (
-    <Router>
-      <Scene key="root">
+  <Router>
+    <Scene key="root">
 
-      <Scene
-        key="form"
-        component={Form}
-        initial
-      />
+    <Scene
+      key="form"
+      component={Form}
+      hideNavBar
+      initial
+    />
 
-      <Scene
-        key="flip"
-        component={CarouselExample}
-      />
+    <Scene
+      key="flip"
+      component={CarouselExample}
+      hideNavBar
+    />
 
-      </Scene>
-    </Router>
+    </Scene>
+  </Router>
   );
 
 
