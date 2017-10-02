@@ -16,25 +16,36 @@ import Form from './src/components/Form';
 import DogList from './src/components/DogList';
 
 const frontEnd = () => (
-  <Router>
+  <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle}>
     <Scene key="root">
-
     <Scene
       key="form"
       component={Form}
-      title="Form"
+      title="PuppR"
       initial
     />
 
     <Scene
       key="flip"
       component={CarouselExample}
-      title="showDogs"
+      title="PuppR"
     />
 
     </Scene>
   </Router>
   );
 
+const styles = {
+  navBar: {
+    height: 90
+  },
+  navBarTitle: {
+    color: '#598ED3',
+    fontSize: 45,
+    fontFamily: 'Helvetica',
+    fontWeight: '300'
+  }
+
+};
 
 AppRegistry.registerComponent('frontEnd', () => frontEnd);

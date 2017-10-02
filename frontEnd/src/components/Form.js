@@ -11,9 +11,9 @@ class Form extends Component {
   constructor(props){
     super(props);
     this.state = {
-      size: 'S',
-      age: 'Young',
-      gender: 'F',
+      size: '',
+      age: '',
+      sex: '',
       location: ''
     };
   };
@@ -53,10 +53,15 @@ render(){
 
 
   return (
-    <View>
+    <View style={styles.formContainer}>
       <View style={styles.locationContainer}>
         <Text style={styles.locationTitle}>Find Nearest Shelter</Text>
         <TextInput
+          textAlign="center"
+          keyboardType="numeric"
+          selectionColor="#E9E9EF"
+          animationDuration={5}
+          maxLength={5}
           placeholder="Enter Your Zipcode"
           onChangeText={(location) => this.setState({location})}
         />
@@ -77,10 +82,10 @@ render(){
     <Dropdown
     label='Select Sex'
     data={sexData}
-    onChangeText={(value, index, data) => this.setState({gender:value})}
+    onChangeText={(value, index, data) => this.setState({sex:value})}
     />
 
-    <Button title="Submit" onPress={() => Actions.flip()}/>
+    <Button title="Submit" color="#D3598E" onPress={() => Actions.flip()}/>
 
     </View>
     );
@@ -89,18 +94,17 @@ render(){
 };
 
 const styles = {
-  selectionContainer: {
-
-  },
-
   locationContainer: {
     marginTop: 100,
     alignItems: 'center'
   },
   locationTitle: {
-    fontSize: 18
+    fontSize: 18,
+    color: '#8ED359'
+  },
+  formContainer: {
+    padding: 20
   }
-
 };
 
 export default Form;

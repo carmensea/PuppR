@@ -29,7 +29,7 @@ const styles = {
     color: '#4ca6a6',
     fontSize: 40,
     fontWeight: 'bold',
-    fontFamily: 'Didot-Bold'
+    fontFamily: 'Helvetica'
   }
 };
 
