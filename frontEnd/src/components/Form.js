@@ -32,7 +32,8 @@ class Form extends Component {
         results: response.data
       });
       Actions.flip(dogs =this.state.results);
-    });
+    })
+    .catch( error => console.log(error))
   }
 
 

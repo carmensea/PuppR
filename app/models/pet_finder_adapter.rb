@@ -48,7 +48,7 @@ class PetFinderAdapter < ApplicationRecord
       dog[:age] = hash["age"]
       dog[:sex] = hash["sex"]
       dog[:size] = hash["size"]
-      dog[:photo] = hash["photo"]
+      #dog[:photo] = hash["photo"]
       dog[:shelter_id] = shelter.id
       Dog.new(dog)
     end
@@ -73,7 +73,7 @@ class PetFinderAdapter < ApplicationRecord
         result["city"] = info["contact"]["city"]["$t"]
         result["zip"] = info["contact"]["zip"]["$t"]
         result["shelter_id"] = info["shelterId"]["$t"]
-        result["photo"] = info["media"]["photos"]["photo"][2]["$t"]
+        #result["photo"] = info["media"]["photos"]["photo"][2]["$t"]
         all_results << creation_details(result)
         i += 1
       end

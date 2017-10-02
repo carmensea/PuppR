@@ -11,4 +11,16 @@ class PetfinderController < ApplicationController
 
   end
 
+  def new
+  end
+
+  def create
+    @dog = Dog.new(params[dog])
+    if @dog.save
+      p "This is save #{@dog}"
+    else
+      p @dog
+    end
+
+  end
 end
