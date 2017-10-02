@@ -1,12 +1,14 @@
 class PetfinderController < ApplicationController
 
   def index
-    # axios call to petfinder.index
-    # rails server up, running localhost3000
-    # call will be localhost3000
-    # need react env
     pets = PetFinderAdapter.new
-    render json: pets.custom_search
+    render json: pets.custom_search(params)
+  end
+
+  # need to save dog from carousel
+  def favorites
+    @user = User.first
+
   end
 
 end

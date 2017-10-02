@@ -10,20 +10,20 @@ class PetFinderAdapter < ApplicationRecord
     @animal = "dog"
   end
 
-  def custom_search
+  def custom_search(params)
     #size = params['size']
     #location = params['location']
     @response = HTTParty.get("#{ENV['PETFINDER_URL']}/pet.find?",
                              { query:
-                               {#"location" => location,
-                                #"term" => term,
-                                  "key" => "#{ENV['PETFINDER_KEY']}",
-                                  "animal" => "dog",
-                                  "location" => "94131",
-                                  "format" => "json"
+                               {"key" => "#{@api_key}",
+                                "animal" => "#{@animal}",
+                                "location" => "#{params['location']}",
+                                "age" => "#{params['age']}",
+                                "size" => "#{params['size']}",
+                                "gender" => "#{params['gender']}",
+                                "format" => "json"
                                 }
     })
-    ap "*" * 1000
     parse_data(@response["petfinder"])
   end
 
@@ -77,6 +77,6 @@ class PetFinderAdapter < ApplicationRecord
         all_results << creation_details(result)
         i += 1
       end
-      p all_results
+      all_results
     end
 end
