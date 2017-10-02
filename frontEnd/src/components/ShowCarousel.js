@@ -12,7 +12,7 @@ import { Actions } from 'react-native-router-flux';
 
 const { width, height } = Dimensions.get('window');
 
-export default class CarouselExample extends Component {
+export default class DogCarousel extends Component {
 
   constructor(props) {
     super(props);
@@ -68,17 +68,3 @@ const styles = {
     justifyContent: 'space-around'
   }
 };
-
-
-{/*}<View style={[{ backgroundColor: 'red' }, this.state.size]}>
-  <Button onPress={() => console.log("Left")}/>
-  <Button onPress={() => console.log("Right")}/>
-</View>
-<View style={[{ backgroundColor: '#BADA55' }, this.state.size]}>
-  <Button onPress={() => console.log("Left")}/>
-  <Button onPress={() => console.log("Right")}/>
-</View>
-<View style={[{ backgroundColor: 'blue' }, this.state.size]}>
-  <Button onPress={() => console.log("Left")}/>
-  <Button onPress={() => console.log("Right")}/>
-</View>*/}
