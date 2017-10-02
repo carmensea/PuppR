@@ -10,20 +10,20 @@ class PetFinderAdapter < ApplicationRecord
     @animal = "dog"
   end
 
-  def custom_search
+  def custom_search(params)
     #size = params['size']
     #location = params['location']
     @response = HTTParty.get("#{ENV['PETFINDER_URL']}/pet.find?",
                              { query:
-                               {#"location" => location,
-                                #"term" => term,
-                                  "key" => "#{ENV['PETFINDER_KEY']}",
-                                  "animal" => "dog",
-                                  "location" => "94131",
-                                  "format" => "json"
+                               {"key" => "#{@api_key}",
+                                "animal" => "#{@animal}",
+                                "location" => "#{params['location']}",
+                                "age" => "#{params['age']}",
+                                "size" => "#{params['size']}",
+                                "sex" => "#{params['sex']}",
+                                "format" => "json"
                                 }
     })
-    ap "*" * 1000
     parse_data(@response["petfinder"])
   end
 
@@ -46,8 +46,9 @@ class PetFinderAdapter < ApplicationRecord
       dog[:name] = hash["name"]
       dog[:description] = hash["desc"]
       dog[:age] = hash["age"]
-      dog[:gender] = hash["gender"]
+      dog[:sex] = hash["sex"]
       dog[:size] = hash["size"]
+      dog[:photo] = hash["photo"] || 'https://i.pinimg.com/236x/de/6d/b7/de6db77b18d07e272d112b17f184e6d9--pug-silhouette-pug-tattoo.jpg'
       dog[:shelter_id] = shelter.id
       Dog.new(dog)
     end
@@ -64,7 +65,7 @@ class PetFinderAdapter < ApplicationRecord
         result = Hash.new
         result["name"] = info["name"]["$t"]
         result["desc"] = info["description"]["$t"]
-        result["gender"] = info["sex"]["$t"]
+        result["sex"] = info["sex"]["$t"]
         result["size"] = info["size"]["$t"]
         result["age"] = info["age"]["$t"]
         result["address"] = info["contact"]["address1"]["$t"]
@@ -72,10 +73,10 @@ class PetFinderAdapter < ApplicationRecord
         result["city"] = info["contact"]["city"]["$t"]
         result["zip"] = info["contact"]["zip"]["$t"]
         result["shelter_id"] = info["shelterId"]["$t"]
-        result["photo"] = info["media"]["photos"]["photo"][2]["$t"]
+        result["photo"] = info.dig("media","photos","photo",2,"$t")
         all_results << creation_details(result)
         i += 1
       end
-      p all_results
+      all_results
     end
 end
