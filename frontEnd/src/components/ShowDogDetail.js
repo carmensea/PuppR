@@ -7,6 +7,7 @@ import axios from 'axios';
 
 const ShowDogDetail = ({dog}) => {
   const { name, sex, description, age, size, photo, shelter_id } = dog
+  console.log(photo)
 
   const likeDog = () => {
     axios.post('http://localhost:3000/dogs', dog)
@@ -25,6 +26,7 @@ const ShowDogDetail = ({dog}) => {
           <Text>{sex}</Text>
           <Text>{description}</Text>
           <Text>{size}</Text>
+          <Image style={{width: 100, height: 100}} source={{uri: photo}}/>
           <Button onPress={noThanks} />
           <Button onPress={likeDog} />
         </View>

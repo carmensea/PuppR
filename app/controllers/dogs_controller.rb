@@ -12,6 +12,7 @@ class DogsController < ApplicationController
   end
 
   def index
+    @user = User.first
 
   end
 
