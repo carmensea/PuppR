@@ -8,7 +8,6 @@ class DogsController < ApplicationController
 
     if @dog.save
       Favorite.create(dog_id: @dog.id, user_id: @user.id)
-      p "This is save #{@dog}"
     else
       p @dog
     end

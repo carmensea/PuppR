@@ -7,7 +7,6 @@ import { Actions } from 'react-native-router-flux';
 const DogDetail = ({ dog }) => {
 	const { eachDogStyle, eachDogPictureContainerStyle, eachDogPictureStyle, eachDogNameContainerStyle, eachDogNameStyle} = styles;
 	const { name, sex, description, age, size, photo, shelter_id } = dog
-  // console.log(dog);
   return (
 		<View style={eachDogStyle}>
         	<View style={eachDogPictureContainerStyle}><Image source={{ uri: photo }} style={eachDogPictureStyle}/></View>

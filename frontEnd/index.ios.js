@@ -1,7 +1,7 @@
 import Header from './src/components/Header';
 import ShowDogList from './src/components/ShowDogList';
 import CarouselExample from './src/components/ShowCarousel';
-import ScottShowDogDetail from './src/components/ScottShowDogDetail';
+import ShowFavoriteDogDetail from './src/components/ShowFavoriteDogDetail';
 import Button from './src/components/ShowButton';
 import { Router, Scene } from 'react-native-router-flux';
 
@@ -14,7 +14,6 @@ import {
 } from 'react-native';
 
 import Form from './src/components/Form';
-import DogList from './src/components/DogList';
 import DogIndex from './src/components/DogIndex';
 
 const frontEnd = () => (
@@ -39,7 +38,7 @@ const frontEnd = () => (
 
     <Scene
       key="show"
-      component={ScottShowDogDetail}
+      component={ShowFavoriteDogDetail}
       title="PuppR"
     />
 

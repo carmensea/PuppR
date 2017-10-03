@@ -9,14 +9,4 @@ const ShowCardSection = (props) => {
   );
 }
 
-// may not add styles here
-// const style = {
-//   containerStyle: {
-//     add some style maybe:
-      //  maybe flexDirection
-      //  justifyContent
-//
-//   }
-// }
-
 export default ShowCardSection;

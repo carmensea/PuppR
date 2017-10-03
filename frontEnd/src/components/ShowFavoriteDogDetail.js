@@ -6,14 +6,9 @@ import DogContactInfo from './DogContactInfo';
 import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
 
-// const { name, sex, description, age, size, photo, shelter_id } = dog
-
-// const { headContentStyle, pageHeadlineStyle, dogPictureContainer, dogPicture} = styles
-
-class ScottShowDogDetail extends Component {
+class ShowFavoriteDogDetail extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
     this.state = {
       dog:"",
       shelter: ""
@@ -23,8 +18,7 @@ class ScottShowDogDetail extends Component {
 
   componentWillMount() {
      axios.get('http://localhost:3000/dogs/' + this.props.id)
-     .then(response => this.setState({ dog: response.data.dog, shelter: response.data.shelter }))
-     .then(() => console.log(this.state.dog));
+     .then(response => this.setState({ dog: response.data.dog, shelter: response.data.shelter }));
    }
 
  render(){
@@ -75,4 +69,4 @@ const styles = {
   }
 };
 
-export default ScottShowDogDetail;
+export default ShowFavoriteDogDetail;

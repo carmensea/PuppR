@@ -8,7 +8,6 @@ import { Actions } from 'react-native-router-flux';
 
 const ShowDogDetail = ({dog}) => {
   const { name, sex, description, age, size, photo, shelter_id } = dog
-  console.log(photo)
 
   const likeDog = () => {
     axios.post('http://localhost:3000/dogs', dog)
