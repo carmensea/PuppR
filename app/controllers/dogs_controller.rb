@@ -4,7 +4,10 @@ class DogsController < ApplicationController
 
   def create
     @dog = Dog.new(dog_details)
+    @user = User.first
+
     if @dog.save
+      Favorite.create(dog_id: @dog.id, user_id: @user.id)
       p "This is save #{@dog}"
     else
       p @dog
@@ -13,7 +16,7 @@ class DogsController < ApplicationController
 
   def index
     @user = User.first
-
+    render json: @user.dogs
   end
 
   private

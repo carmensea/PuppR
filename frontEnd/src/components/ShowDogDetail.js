@@ -4,6 +4,7 @@ import ShowCard from './ShowCard';
 import ShowCardSection from './ShowCardSection';
 import Button from './ShowButton';
 import axios from 'axios';
+import { Actions } from 'react-native-router-flux';
 
 const ShowDogDetail = ({dog}) => {
   const { name, sex, description, age, size, photo, shelter_id } = dog
@@ -11,10 +12,6 @@ const ShowDogDetail = ({dog}) => {
 
   const likeDog = () => {
     axios.post('http://localhost:3000/dogs', dog)
-  }
-
-  const noThanks = () => {
-    axios.delete('', dog)
   }
 
   return (
@@ -27,7 +24,7 @@ const ShowDogDetail = ({dog}) => {
           <Text>{description}</Text>
           <Text>{size}</Text>
           <Image style={{width: 100, height: 100}} source={{uri: photo}}/>
-          <Button onPress={noThanks} />
+          <Button onPress={() => Actions.favorites()} />
           <Button onPress={likeDog} />
         </View>
       </ShowCardSection>
