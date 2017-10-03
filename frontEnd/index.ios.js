@@ -54,7 +54,7 @@ const styles = {
     color: '#598ED3',
     fontSize: 45,
     fontFamily: 'Helvetica',
-    fontWeight: '300'
+    fontWeight: '500'
   }
 
 };

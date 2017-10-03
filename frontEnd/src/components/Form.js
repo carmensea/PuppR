@@ -72,6 +72,7 @@ render(){
           textAlign="center"
           keyboardType="numeric"
           selectionColor="#E9E9EF"
+          itemColor="#9e59d3"
           animationDuration={5}
           maxLength={5}
           placeholder="Enter Your Zipcode"
