@@ -20,7 +20,7 @@ const ShowDogDetail = ({dog}) => {
           <Text>{name}</Text>
           <Text>{age}</Text>
           <Text>{sex}</Text>
-          <Text>{description}</Text>
+          
           <Text>{size}</Text>
           <Image style={{width: 100, height: 100}} source={{uri: photo}}/>
           <Button onPress={() => Actions.favorites()} />
@@ -39,3 +39,4 @@ const styles = {
 };
 
 export default ShowDogDetail;
+//Commented out line 23: <Text>{description}</Text>
