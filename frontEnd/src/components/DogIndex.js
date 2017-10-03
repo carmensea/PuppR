@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, ScrollView, Image } from 'react-native';
 import DogDetail from './DogDetail';
 import axios from 'axios';
 
@@ -9,24 +9,26 @@ class DogIndex extends Component {
           dogs: []
   };
 
-   componentWillMount() {
+  componentWillMount() {
      axios.get('http://localhost:3000/dogs')
      .then(response => this.setState({ dogs: response.data }));
-   }
+  }
 
   renderDogs() {
-    console.log(this.state.dogs);
     return this.state.dogs.map((dog, i) =>
       <DogDetail key={i} dog={dog} />
     );
-  }
+  } 
 
   render() {
     return (
-      <View>
-        <Text style={styles.pageHeadlineStyle}>Paw-tential Soulmates</Text>
-        <View>{this.renderDogs()}</View>
-      </View>
+        <View>
+          <Text style={styles.pageHeadlineStyle}>Paw-tential Soulmates</Text>
+          <ScrollView>
+          <View>{this.renderDogs()}</View>
+          </ScrollView>
+        </View>
+      
     );
   }
 };
@@ -55,3 +57,11 @@ const styles = {
 
 
 export default DogIndex;
+
+// renderDogs(){
+//     this.state.dogs.map((dog) => {
+//       return <DogDetail key={dog.id} dog={dog} />
+//     })
+//   }
+
+
