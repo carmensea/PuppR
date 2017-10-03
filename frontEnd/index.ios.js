@@ -34,6 +34,7 @@ const frontEnd = () => (
       key="favorites"
       component={DogIndex}
       title="PuppR"
+      
     />
 
     <Scene

@@ -33,7 +33,7 @@ class ShowFavoriteDogDetail extends Component {
         </View>
       </ShowCardSection>
       <View style={styles.shelterInfoContainer}>
-        <Text>
+        <Text style={styles.shelterInfo}>
         Address: {this.state.shelter.address}{"\n"}
         Phone: {this.state.shelter.phone}</Text>
       </View>
@@ -60,13 +60,24 @@ const styles = {
   },
   dogPictureContainer: {
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'flex-start',
+    paddingLeft: 35,
+    paddingBottom: 20
   },
 
   dogPicture: {
       height: 300,
       width: 300
+  },
+  shelterInfoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    paddingLeft: 35
+  },
+  shelterInfo: {
+    fontSize: 20  
   }
+
 };
 
 export default ShowFavoriteDogDetail;
