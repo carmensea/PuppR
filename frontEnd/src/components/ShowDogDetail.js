@@ -66,3 +66,4 @@ const styles = {
 };
 
 export default ShowDogDetail;
+//Commented out line 23: <Text>{description}</Text>

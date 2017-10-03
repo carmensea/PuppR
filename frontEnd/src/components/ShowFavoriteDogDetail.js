@@ -71,7 +71,9 @@ const styles = {
   },
   dogPictureContainer: {
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'flex-start',
+    paddingLeft: 35,
+    paddingBottom: 20
   },
   dogPicture: {
     width: 365,
@@ -90,6 +92,7 @@ const styles = {
     fontSize: 25,
     fontWeight: '300'
   }
+
 };
 
 export default ShowFavoriteDogDetail;
