@@ -23,9 +23,8 @@ const frontEnd = () => (
       key="form"
       component={Form}
       title="PuppR"
-      
+      initial
     />
-
     <Scene
       key="flip"
       component={CarouselExample}
@@ -34,8 +33,7 @@ const frontEnd = () => (
     <Scene
       key="favorites"
       component={DogIndex}
-      title="PuppR"
-      initial
+      title="PuppR"  
     />
     </Scene>
   </Router>

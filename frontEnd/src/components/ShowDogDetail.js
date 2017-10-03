@@ -14,10 +14,6 @@ const ShowDogDetail = ({dog}) => {
     axios.post('http://localhost:3000/dogs', dog)
   }
 
-  const noThanks = () => {
-    axios.delete('', dog)
-  }
-
   return (
     <ShowCard>
       <ShowCardSection>
@@ -28,7 +24,7 @@ const ShowDogDetail = ({dog}) => {
           <Text>{description}</Text>
           <Text>{size}</Text>
           <Image style={{width: 100, height: 100}} source={{uri: photo}}/>
-          <Button onPress={() => Actions.favorites} />
+          <Button onPress={() => Actions.favorites()} />
           <Button onPress={likeDog} />
         </View>
       </ShowCardSection>

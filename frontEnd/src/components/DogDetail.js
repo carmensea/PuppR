@@ -13,10 +13,9 @@ const DogDetail = ({ dog }) => {
           <View style={eachDogNameContainerStyle}>
           		<Text style={eachDogNameStyle}>{name}</Text>      
         	    <Text style={eachDogNameStyle}>{sex}</Text>
-              <Text style={eachDogNameStyle}>{age}</Text>
-              
+              <Text style={eachDogNameStyle}>{age}</Text>    
           </View>
-      	</View>
+    </View>
 	);	
 };
 
