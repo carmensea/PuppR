@@ -1,33 +1,55 @@
-import React from 'react';
+import React, { Component }  from 'react';
 import { View, Text, Image } from 'react-native';
 import ShowCard from './ShowCard';
 import ShowCardSection from './ShowCardSection';
 import DogContactInfo from './DogContactInfo';
+import axios from 'axios';
+import { Actions } from 'react-native-router-flux';
 
-const ScottShowDogDetail = () => {
-  const dog = { name: 'Otis', imageURL: 'https://drpem3xzef3kf.cloudfront.net/photos/pets/39348068/5/?bust=1505079564&amp;width=800' }
-  const { headContentStyle, pageHeadlineStyle, dogPictureContainer, dogPicture} = styles
+// const { name, sex, description, age, size, photo, shelter_id } = dog
+
+// const { headContentStyle, pageHeadlineStyle, dogPictureContainer, dogPicture} = styles
+
+class ScottShowDogDetail extends Component {
+  constructor(props) {
+    super(props);
+    console.log(this.props);
+    this.state = {
+      dog:""
+    };
+  }
+
+
+  componentWillMount() {
+     axios.get('http://localhost:3000/dogs/' + this.props.id)
+     .then(response => this.setState({ dog: response.data }));
+   }
+
+ render(){
   return (
     <ShowCard>
       <ShowCardSection>
-        <View style={headContentStyle}>
-          <Text style={pageHeadlineStyle}>{dog.name}</Text>
+        <View style={styles.headContentStyle}>
+          <Text style={styles.pageHeadlineStyle}>{this.state.dog.name}</Text>
         </View>
-        <View style={dogPictureContainer}>
-          <Image source={{ uri: dog.imageURL }} style={dogPicture}/>
+        <View style={styles.dogPictureContainer}>
+          <Image source={{ uri: this.state.dog.photo }} style={styles.dogPicture}/>
         </View>
       </ShowCardSection>
       <DogContactInfo/>
     </ShowCard>
-  );
-};
+    );
+  }
+}
+
+
 
 const styles = {
   headContentStyle: {
     flexDirection: 'column',
     justifyContent: 'space-around'
   },
-  pageHeadlineStyle: { 
+  pageHeadlineStyle: {
       textAlign: 'center',
       fontSize: 30,
       alignItems: 'center',

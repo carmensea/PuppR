@@ -19,6 +19,10 @@ class DogsController < ApplicationController
     render json: @user.dogs
   end
 
+  def show
+    render json: Dog.find(params[:id])
+  end
+
   private
 
     def dog_details

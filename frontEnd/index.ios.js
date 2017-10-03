@@ -1,6 +1,7 @@
 import Header from './src/components/Header';
 import ShowDogList from './src/components/ShowDogList';
 import CarouselExample from './src/components/ShowCarousel';
+import ScottShowDogDetail from './src/components/ScottShowDogDetail';
 import Button from './src/components/ShowButton';
 import { Router, Scene } from 'react-native-router-flux';
 
@@ -33,8 +34,15 @@ const frontEnd = () => (
     <Scene
       key="favorites"
       component={DogIndex}
-      title="PuppR"  
+      title="PuppR"
     />
+
+    <Scene
+      key="show"
+      component={ScottShowDogDetail}
+      title="PuppR"
+    />
+
     </Scene>
   </Router>
   );
