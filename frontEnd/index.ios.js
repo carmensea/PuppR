@@ -1,4 +1,3 @@
-import Header from './src/components/Header';
 import ShowDogList from './src/components/ShowDogList';
 import CarouselExample from './src/components/ShowCarousel';
 import ShowFavoriteDogDetail from './src/components/ShowFavoriteDogDetail';
@@ -17,7 +16,7 @@ import TabIcon from './src/components/TabIcon';
 
 const frontEnd = () => (
   <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle}>
-    <Scene key="root">
+    <Scene key="root" hideNavBar={true}>
     {/* this is the tabs*/}
       <Scene
       key="tabbar"
@@ -67,7 +66,7 @@ const styles = {
     color: '#598ED3',
     fontSize: 45,
     fontFamily: 'Helvetica',
-    fontWeight: '300'
+    fontWeight: '500'
   }
 
 };
