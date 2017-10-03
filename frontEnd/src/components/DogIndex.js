@@ -15,7 +15,7 @@ class DogIndex extends Component {
   }
 
   renderDogs() {
-    return this.state.dogs.map((dog, i) => 
+    return this.state.dogs.map((dog, i) =>
       <DogDetail key={i} dog={dog} />
     );
   } 
