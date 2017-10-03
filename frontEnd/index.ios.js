@@ -14,6 +14,7 @@ import {
 
 import Form from './src/components/Form';
 import DogList from './src/components/DogList';
+import DogIndex from './src/components/DogIndex';
 
 const frontEnd = () => (
   <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle}>
@@ -24,13 +25,16 @@ const frontEnd = () => (
       title="PuppR"
       initial
     />
-
     <Scene
       key="flip"
       component={CarouselExample}
       title="PuppR"
     />
-
+    <Scene
+      key="favorites"
+      component={DogIndex}
+      title="PuppR"  
+    />
     </Scene>
   </Router>
   );

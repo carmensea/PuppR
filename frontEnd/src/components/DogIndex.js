@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import DogDetail from './DogDetail';
+import axios from 'axios';
 
 class DogIndex extends Component {
 
@@ -14,8 +15,9 @@ class DogIndex extends Component {
    }
 
   renderDogs() {
-    return this.state.dogs.map(dog =>
-      <DogDetail key={dog.name} dog={dog} />
+    console.log(this.state.dogs);
+    return this.state.dogs.map((dog, i) => 
+      <DogDetail key={i} dog={dog} />
     );
   }
 

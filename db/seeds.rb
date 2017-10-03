@@ -7,8 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(name: "Scott")
-User.create(name: "Carmen")
-User.create(name: "Sara")
-User.create(name: "Marissa")
-User.create(name: "Vivian")
+
 

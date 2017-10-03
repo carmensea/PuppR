@@ -5,13 +5,17 @@ import DogIndex from './DogIndex';
 
 const DogDetail = ({ dog }) => {
 	const { eachDogStyle, eachDogPictureContainerStyle, eachDogPictureStyle, eachDogNameContainerStyle, eachDogNameStyle} = styles;
-	return (
+	const { name, sex, description, age, size, photo, shelter_id } = dog
+  console.log(dog);
+  return (
 		<View style={eachDogStyle}>
-        	<View style={eachDogPictureContainerStyle}><Image source={{ uri: dog.imageURL }} style={eachDogPictureStyle}/></View>
-        	<View style={eachDogNameContainerStyle}>
-          		<Text style={eachDogNameStyle}>{dog.name}</Text>      
-        	</View>
-      	</View>
+        	<View style={eachDogPictureContainerStyle}><Image source={{ uri: photo }} style={eachDogPictureStyle}/></View>
+          <View style={eachDogNameContainerStyle}>
+          		<Text style={eachDogNameStyle}>{name}</Text>      
+        	    <Text style={eachDogNameStyle}>{sex}</Text>
+              <Text style={eachDogNameStyle}>{age}</Text>    
+          </View>
+    </View>
 	);	
 };
 
