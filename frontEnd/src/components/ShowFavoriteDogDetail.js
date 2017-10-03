@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 import ShowCard from './ShowCard';
 import ShowCardSection from './ShowCardSection';
 import DogContactInfo from './DogContactInfo';
@@ -15,7 +15,6 @@ class ShowFavoriteDogDetail extends Component {
     };
   }
 
-
   componentWillMount() {
      axios.get('http://localhost:3000/dogs/' + this.props.id)
      .then(response => this.setState({ dog: response.data.dog, shelter: response.data.shelter }));
@@ -23,21 +22,34 @@ class ShowFavoriteDogDetail extends Component {
 
  render(){
   return (
+    <ScrollView>
     <ShowCard>
       <ShowCardSection>
         <View style={styles.headContentStyle}>
           <Text style={styles.pageHeadlineStyle}>{this.state.dog.name}</Text>
         </View>
+
         <View style={styles.dogPictureContainer}>
           <Image source={{ uri: this.state.dog.photo }} style={styles.dogPicture}/>
         </View>
+
       </ShowCardSection>
-      <View style={styles.shelterInfoContainer}>
-        <Text style={styles.shelterInfo}>
-        Address: {this.state.shelter.address}{"\n"}
+      <View>
+        <Text style={styles.shelterInfoStyle}>
+        Adopt Me Here: {this.state.shelter.address}{"\n"}
         Phone: {this.state.shelter.phone}</Text>
       </View>
+
+      <View style={styles.aboutHeaderContainer}>
+        <Text style={styles.aboutHeaderStyle}>About {this.state.dog.name}</Text>
+      </View>
+
+      <View>
+        <Text>{this.state.dog.description}</Text>
+      </View>
+
     </ShowCard>
+    </ScrollView>
     );
   }
 }
@@ -47,16 +59,15 @@ class ShowFavoriteDogDetail extends Component {
 const styles = {
   headContentStyle: {
     flexDirection: 'column',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    flexDirection: 'column',
+    justifyContent: 'center'
   },
   pageHeadlineStyle: {
-      textAlign: 'center',
-      fontSize: 30,
-      alignItems: 'center',
-      height: 100,
-      paddingTop: 20,
-      elevation: 2,
-      position: 'relative'
+    fontSize: 40,
+    fontWeight: '300',
+    color: '#8ED359',
+    textAlign: 'center'
   },
   dogPictureContainer: {
     flexDirection: 'row',
@@ -64,18 +75,22 @@ const styles = {
     paddingLeft: 35,
     paddingBottom: 20
   },
-
   dogPicture: {
-      height: 300,
-      width: 300
+    width: 365,
+    height: 365,
+    resizeMode: 'contain'
   },
-  shelterInfoContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    paddingLeft: 35
+  shelterInfoStyle: {
+    textAlign: 'center'
   },
-  shelterInfo: {
-    fontSize: 20  
+  aboutHeaderContainer: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  aboutHeaderStyle: {
+    fontSize: 25,
+    fontWeight: '300'
   }
 
 };
