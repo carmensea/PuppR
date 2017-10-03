@@ -20,7 +20,11 @@ class DogsController < ApplicationController
   end
 
   def show
-    render json: Dog.find(params[:id])
+    @dog = Dog.find(params[:id])
+    @shelter = @dog.shelter
+    dog_shelter_response = {dog: @dog,
+      shelter: @shelter}
+    render json: dog_shelter_response
   end
 
   private

@@ -15,14 +15,16 @@ class ScottShowDogDetail extends Component {
     super(props);
     console.log(this.props);
     this.state = {
-      dog:""
+      dog:"",
+      shelter: ""
     };
   }
 
 
   componentWillMount() {
      axios.get('http://localhost:3000/dogs/' + this.props.id)
-     .then(response => this.setState({ dog: response.data }));
+     .then(response => this.setState({ dog: response.data.dog, shelter: response.data.shelter }))
+     .then(() => console.log(this.state.dog));
    }
 
  render(){
@@ -36,7 +38,11 @@ class ScottShowDogDetail extends Component {
           <Image source={{ uri: this.state.dog.photo }} style={styles.dogPicture}/>
         </View>
       </ShowCardSection>
-      <DogContactInfo/>
+      <View style={styles.shelterInfoContainer}>
+        <Text>
+        Address: {this.state.shelter.address}{"\n"}
+        Phone: {this.state.shelter.phone}</Text>
+      </View>
     </ShowCard>
     );
   }
