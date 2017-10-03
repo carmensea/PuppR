@@ -16,7 +16,6 @@ export default class CarouselExample extends Component {
 
   constructor(props) {
     super(props);
-    console.log(this.props)
 
     this.state = {
       size: { width, height },

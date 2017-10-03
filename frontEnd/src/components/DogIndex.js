@@ -27,12 +27,12 @@ class DogIndex extends Component {
         <Text style={styles.pageHeadlineStyle}>Paw-tential Soulmates</Text>
         <View>{this.renderDogs()}</View>
       </View>
-    );  
-  }  
+    );
+  }
 };
 
 const styles = {
-    pageHeadlineStyle: { 
+    pageHeadlineStyle: {
       textAlign: 'center',
       fontSize: 30,
       alignItems: 'center',
@@ -40,7 +40,18 @@ const styles = {
       paddingTop: 20,
       elevation: 2,
       position: 'relative'
-    }  
+    },
+    eachDogNameStyle: {
+      paddingLeft: 10,
+      fontSize: 20
+    },
+    eachDogNameContainer: {
+      flex: 15,
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignText: 'center'
+    }
   };
+
 
 export default DogIndex;
