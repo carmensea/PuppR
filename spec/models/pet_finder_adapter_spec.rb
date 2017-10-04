@@ -10,7 +10,4 @@ RSpec.describe PetFinderAdapter, type: :model do
   it "instantiates a PetFinderAdapter object" do           
   	expect(pet_finder_adapter).to be_instance_of PetFinderAdapter    
   end
-
-
-
 end
