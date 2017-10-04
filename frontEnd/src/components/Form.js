@@ -6,6 +6,11 @@ import CarouselExample from './ShowCarousel';
 import axios from 'axios';
 
 class Form extends Component {
+  static onEnter = () => {
+    Actions.refresh()
+  }
+
+
   constructor(props){
     super(props);
     this.state = {

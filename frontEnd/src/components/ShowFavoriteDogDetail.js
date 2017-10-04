@@ -1,10 +1,11 @@
 import React, { Component }  from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import { View, Text, Image, ScrollView , TouchableOpacity } from 'react-native';
 import ShowCard from './ShowCard';
 import ShowCardSection from './ShowCardSection';
 import DogContactInfo from './DogContactInfo';
 import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
+import unmatchPaw from './unmatch-paw.png'
 
 class ShowFavoriteDogDetail extends Component {
   constructor(props) {
@@ -19,6 +20,11 @@ class ShowFavoriteDogDetail extends Component {
      axios.get('http://localhost:3000/dogs/' + this.props.id)
      .then(response => this.setState({ dog: response.data.dog, shelter: response.data.shelter }));
    }
+
+   unlikeDog = () => {
+    axios.delete('http://localhost:3000/dogs/' + this.props.id)
+     .then(Actions.favorites());
+   };
 
  render(){
   return (
@@ -43,6 +49,10 @@ class ShowFavoriteDogDetail extends Component {
       <View style={styles.aboutHeaderContainer}>
         <Text style={styles.aboutHeaderStyle}>About {this.state.dog.name}</Text>
       </View>
+
+      <TouchableOpacity onPress={() => this.unlikeDog()} >
+          <Image style={{width: 50, height: 50}} source={unmatchPaw} />
+        </TouchableOpacity>
 
       <View>
         <Text>{this.state.dog.description}</Text>

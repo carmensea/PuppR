@@ -4,7 +4,6 @@ import DogDetail from './DogDetail';
 import axios from 'axios';
 
 class DogIndex extends Component {
-
   state = {
           dogs: []
   };
@@ -18,7 +17,7 @@ class DogIndex extends Component {
     return this.state.dogs.map((dog, i) =>
       <DogDetail key={i} dog={dog} />
     );
-  } 
+  }
 
   render() {
     return (
@@ -28,7 +27,7 @@ class DogIndex extends Component {
           <View>{this.renderDogs()}</View>
           </ScrollView>
         </View>
-      
+
     );
   }
 };

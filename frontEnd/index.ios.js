@@ -13,38 +13,37 @@ import {
 import Form from './src/components/Form';
 import DogIndex from './src/components/DogIndex';
 import TabIcon from './src/components/TabIcon';
+import ViewFavorites from './src/components/ViewFavorites';
 
 const frontEnd = () => (
   <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle}>
-    <Scene key="root" hideNavBar={true}>
-    {/* this is the tabs*/}
-      <Scene
-      key="tabbar"
-      tabs={true}
-      tabBarStyle={{ backgroundColor: '#FFFFFF'}}
-      >
-    {/* this the bar*/}
-      <Scene key="favs" title="Favs" icon={TabIcon}>
+    <Scene key="root">
+       <Scene
+          key="seefavoties"
+          component={ViewFavorites}
+          title="PuppR"
+          initial
+        />
+
         <Scene
           key="favorites"
           component={DogIndex}
           title="PuppR"
-          initial
         />
+
         <Scene
           key="show"
           component={ShowFavoriteDogDetail}
           title="PuppR"
         />
-    {/* this closes bar*/}
-      </Scene>
-    <Scene key="fillform" title="Fill Form" icon={TabIcon}>
+
         <Scene
           key="form"
           component={Form}
           title="PuppR"
           initial
         />
+
         <Scene
           key="flip"
           component={CarouselExample}
@@ -52,9 +51,6 @@ const frontEnd = () => (
         />
       {/* this closes bar*/}
       </Scene>
-      {/* this closes tabs*/}
-      </Scene>
-    </Scene>
   </Router>
   );
 
