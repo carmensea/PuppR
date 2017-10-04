@@ -8,7 +8,7 @@ import { Actions } from 'react-native-router-flux';
 import pawHeart from './heart-paw.png';
 import faves from './faves.jpg';
 import searchPaw from './search-paw.png';
-// import Footer from './Footer';
+// import wordLogo from './word-logo.png';
 
 const ShowDogDetail = ({dog}) => {
   const { name, sex, description, age, size, photo, shelter_id } = dog
@@ -18,8 +18,7 @@ const ShowDogDetail = ({dog}) => {
   }
 
   return (
-    <ShowCard style={{flex: 1}}>
-      <ShowCardSection>
+    <View style={{flex: 1}, {marginTop: 30}}>
         <View style={styles.pictureStyle}>
             <Image style={styles.pictureSizeStyle} source={{uri: photo}}/>
           </View>
@@ -33,29 +32,11 @@ const ShowDogDetail = ({dog}) => {
             </TouchableOpacity>
           </View>
         </View>
-      </ShowCardSection>
 
     <View>
-      <View style={styles.iconStyle}>
-        <TouchableOpacity onPress={() => Actions.favorites()}>
-          <Image style={{width: 50, height: 50}} source={faves} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => Actions.form()}>
-          <Image style={{width: 50, height: 50}} source={searchPaw} />
-        </TouchableOpacity>
-      </View>
 
-      <View style={styles.iconStyle}>
-        <Text style={{color: '#838887'}}>
-          See Faves
-        </Text>
-        <Text style={{color: '#838887'}}>
-          Search
-        </Text>
-      </View>
     </View>
-
-    </ShowCard>
+    </View>
   );
 };
 
@@ -79,20 +60,13 @@ const styles = {
   pictureStyle: {
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: 25
+    alignItems: 'center'
   },
   pictureSizeStyle: {
     width: 365,
     height: 365,
     resizeMode: 'contain'
-  },
-  iconStyle: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingBottom: 10
-  },
-
+  }
 };
 
 export default ShowDogDetail;

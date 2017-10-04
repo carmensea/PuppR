@@ -19,20 +19,21 @@ import ViewFavorites from './src/components/ViewFavorites';
 const frontEnd = () => (
   <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle}>
 
-    <Scene key="root">
-    <Scene
+    <Scene key="root" hideNavBar={true}>
+      <Scene
+        key="favorites"
+        component={DogIndex}
+        title="PuppR"
+      />
+     <Scene
       key="form"
       component={Form}
       title="PuppR"
-    />
+      initial
+      />
     <Scene
       key="flip"
       component={CarouselExample}
-      title="PuppR"
-    />
-    <Scene
-      key="favorites"
-      component={DogIndex}
       title="PuppR"
     />
 
@@ -44,7 +45,6 @@ const frontEnd = () => (
    <Scene
      key="register"
      component={Register}
-    initial
    />
   <Scene
     key="login"
