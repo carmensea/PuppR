@@ -5,11 +5,13 @@ class DogsController < ApplicationController
   def create
     @dog = Dog.new(dog_details)
     @user = User.first
-
-    if @dog.save
+    p @dog
+    p @user
+    if !@user.dogs.include?(@dog)
+      @dog.save
       Favorite.create(dog_id: @dog.id, user_id: @user.id)
     else
-      p @dog
+      p 'did not save'
     end
   end
 

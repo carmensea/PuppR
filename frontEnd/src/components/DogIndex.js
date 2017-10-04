@@ -28,8 +28,8 @@ class DogIndex extends Component {
         <TouchableOpacity onPress={() => Actions.form()}>
           <Image style={{width: 50, height: 50}} source={searchPaw} />
         </TouchableOpacity>
-          <Text style={styles.headlineContainerStyle}>Paw-tential Soulmates</Text>
           <ScrollView>
+            <Text style={styles.headlineContainerStyle}>Paw-tential Soulmates</Text>
             <View>
               {this.renderDogs()}
             </View>
