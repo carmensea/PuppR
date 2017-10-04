@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Picker, Button, TextInput } from 'react-native';
+import { Text, View, Picker, AsyncStorage, Button, TextInput } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 import { Actions } from 'react-native-router-flux';
 import CarouselExample from './ShowCarousel';

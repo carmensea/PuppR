@@ -15,6 +15,8 @@ import {
 
 import Form from './src/components/Form';
 import DogIndex from './src/components/DogIndex';
+import Register from './register';
+import Login from './login';
 
 const frontEnd = () => (
   <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle}>
@@ -23,7 +25,6 @@ const frontEnd = () => (
       key="form"
       component={Form}
       title="PuppR"
-      initial
     />
     <Scene
       key="flip"
@@ -41,7 +42,15 @@ const frontEnd = () => (
       component={ShowFavoriteDogDetail}
       title="PuppR"
     />
-
+   <Scene
+     key="register"
+     component={Register}
+   />
+  <Scene
+    key="login"
+    component={Login}
+    initial
+  />
     </Scene>
   </Router>
   );
