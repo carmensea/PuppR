@@ -49,6 +49,7 @@ const frontEnd = () => (
   <Scene
     key="login"
     component={Login}
+    initial
   />
     </Scene>
   </Router>

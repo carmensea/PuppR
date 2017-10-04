@@ -11,21 +11,25 @@ import Carousel from 'react-native-looped-carousel';
 import ShowDogDetail from './ShowDogDetail';
 import Button from './ShowButton';
 import { Actions } from 'react-native-router-flux';
+import { storeToken, getToken } from '../../token';
 import wordLogo from './word-logo.png';
 import faves from './faves.jpg';
 import searchPaw from './search-paw.png';
 
+
+ACCESS_TOKEN = 'access_token'
 const { width, height } = Dimensions.get('window');
 
 export default class CarouselExample extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       size: { width, height },
-      dogs: this.props.data
+      dogs: this.props.dogs,
+      token: this.props.token
     };
+    console.log(this.state.token)
     this.renderDogs = this.renderDogs.bind(this);
   }
 
@@ -35,14 +39,15 @@ export default class CarouselExample extends Component {
   }
 
   renderDogs() {
-    return this.props.data.map((dog, i) => {
+    let token = this.state.token
+    return this.state.dogs.map((dog, i) => {
       return (
         <ScrollView>
           <View
             style={this.state.size}
             key={i}
           >
-            <ShowDogDetail dog={dog}/>
+            <ShowDogDetail dog={dog} token={token}/>
           </View>
         </ScrollView>
       );
