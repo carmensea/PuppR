@@ -13,6 +13,7 @@ import {
 import Form from './src/components/Form';
 import DogIndex from './src/components/DogIndex';
 import TabIcon from './src/components/TabIcon';
+import ViewFavorites from './src/components/ViewFavorites';
 
 const frontEnd = () => (
   <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle}>
@@ -23,18 +24,19 @@ const frontEnd = () => (
           component={DogIndex}
           title="PuppR"
         />
+
         <Scene
           key="show"
           component={ShowFavoriteDogDetail}
           title="PuppR"
         />
-    {/* this closes bar*/}
         <Scene
           key="form"
           component={Form}
           title="PuppR"
           initial
         />
+
         <Scene
           key="flip"
           component={CarouselExample}
@@ -42,7 +44,8 @@ const frontEnd = () => (
         />
 
       {/* this closes bar*/}
-    </Scene>
+
+      </Scene>
   </Router>
   );
 

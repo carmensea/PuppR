@@ -8,6 +8,11 @@ import faves from './faves.jpg';
 
 
 class Form extends Component {
+  static onEnter = () => {
+    Actions.refresh()
+  }
+
+
   constructor(props){
     super(props);
     this.state = {

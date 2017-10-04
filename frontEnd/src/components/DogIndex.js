@@ -6,7 +6,6 @@ import searchPaw from './search-paw.png';
 import { Actions } from 'react-native-router-flux';
 
 class DogIndex extends Component {
-
   state = {
     dogs: []
   };
