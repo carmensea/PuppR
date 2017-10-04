@@ -4,15 +4,26 @@ import DogDetail from './DogDetail';
 import axios from 'axios';
 import searchPaw from './search-paw.png';
 import { Actions } from 'react-native-router-flux';
+import { storeToken, getToken } from '../../token';
 
 class DogIndex extends Component {
   state = {
-    dogs: []
+    dogs: [],
+    access_token: ''
   };
 
   componentWillMount() {
-     axios.get('http://localhost:3000/dogs')
-     .then(response => this.setState({ dogs: response.data }));
+      getToken().then((result) =>
+      axios.get('http://localhost:3000/dogs', {
+        params: {
+          access_token: result
+        }
+      })
+      .then(response =>
+      this.setState({ dogs: response.data }
+      ),
+      )
+     );
   }
 
   renderDogs() {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import ShowCard from './ShowCard';
 import ShowCardSection from './ShowCardSection';
@@ -11,26 +11,36 @@ import searchPaw from './search-paw.png';
 import { storeToken, getToken } from '../../token';
 
 
-const ShowDogDetail = ({dog}, {token}) => {
-  console.log(token)
-  const { name, sex, description, age, size, photo, shelter_id } = dog
-
-  const likeDog = () => {
-    axios.post('http://localhost:3000/dogs', dog)
+class ShowDogDetail extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      photo: this.props.dog.photo,
+      name:  this.props.dog.name,
+      token: this.props.token
+    };
+    this.likeDog = this.likeDog.bind(this);
+  };
+  likeDog = () => {
+    axios.post('http://localhost:3000/dogs', {
+        dog: this.props.dog,
+        access_token: this.state.token
+    })
   }
 
+render() {
   return (
     <ShowCard style={{flex: 1}}>
       <ShowCardSection>
         <View style={styles.pictureStyle}>
-            <Image style={styles.pictureSizeStyle} source={{uri: photo}}/>
+            <Image style={styles.pictureSizeStyle} source={{uri: this.state.photo}}/>
           </View>
 
         <View style={styles.headContentStyle}>
           <View style={styles.nameStyleContainer}>
-            <Text style={styles.nameTextStyle}>{name}</Text>
+            <Text style={styles.nameTextStyle}>{this.state.name}</Text>
 
-            <TouchableOpacity onPress={likeDog}>
+            <TouchableOpacity onPress={this.likeDog}>
               <Image style={{width: 50, height: 50}} source={pawHeart} />
             </TouchableOpacity>
           </View>
@@ -59,7 +69,9 @@ const ShowDogDetail = ({dog}, {token}) => {
 
     </ShowCard>
   );
+  }
 };
+
 
 const styles = {
   headContentStyle: {

@@ -14,8 +14,6 @@ export  async function storeToken(storageKey, accessToken) {
       getToken();
     } catch(error){
       console.log('error:', error)
-      console.log('accessToken:', accessToken)
-      console.log("something went wrong")
     }
   }
 

@@ -34,6 +34,7 @@ export default class CarouselExample extends Component {
   }
 
   renderDogs() {
+    let token = this.state.token
     return this.state.dogs.map((dog, i) => {
       return (
         <ScrollView>
@@ -41,7 +42,7 @@ export default class CarouselExample extends Component {
             style={this.state.size}
             key={i}
           >
-            <ShowDogDetail dog={dog} token={this.state.token}/>
+            <ShowDogDetail dog={dog} token={token}/>
           </View>
         </ScrollView>
       );
