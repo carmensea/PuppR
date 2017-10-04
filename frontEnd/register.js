@@ -7,6 +7,7 @@ import { StyleSheet,
   View
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { storeToken, getToken } from './token';
 
 
 ACCESS_TOKEN = 'access_token';
@@ -22,28 +23,8 @@ class Register extends Component {
       password_confirmation: "",
       errors: [],
     }
-    this.storeToken = this.storeToken.bind(this);
-    this.getToken = this.getToken.bind(this)
   }
 
-  async storeToken(accessToken) {
-    try {
-      await AsyncStorage.setItem(ACCESS_TOKEN, accessToken);
-      this.getToken();
-    } catch(error){
-      console.log('error:', error)
-      console.log('accessToken:', accessToken)
-      console.log("something went wrong")
-    }
-  }
-
-  async getToken() {
-    try {
-      return await AsyncStorage.getItem(ACCESS_TOKEN);
-    } catch(error){
-      console.log("something went wrong")
-    }
-  }
   async onRegisterPressed() {
     { fetch('http://localhost:3000/users', {
         method: "POST",
@@ -65,7 +46,7 @@ class Register extends Component {
         if (res.status >= 200 && res.status < 300) {
         this.setState({error: ""});
         let accessToken = JSON.parse(res._bodyText).accessToken;
-        this.storeToken(accessToken);
+        storeToken(ACCESS_TOKEN, accessToken);
         console.log("res token: " + accessToken);
         Actions.form();
       } 

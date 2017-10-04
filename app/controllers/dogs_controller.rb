@@ -4,10 +4,9 @@ class DogsController < ApplicationController
 
   def create
     @dog = Dog.new(dog_details)
-    @user = User.find_by(access_token[:access_token])
+    @user = User.find_by(params[access_token: access_token[:access_token]])
 
-    p "*" * 100
-    p Dog.all.include?(@dog)
+    p params
     #this is saying if the dogs name exists and the description, its false
     if !Dog.find_by(dog_details)
       @dog.save

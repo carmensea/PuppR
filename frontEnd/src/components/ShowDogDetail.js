@@ -8,7 +8,8 @@ import { Actions } from 'react-native-router-flux';
 import pawHeart from './heart-paw.png';
 import faves from './faves.jpg';
 import searchPaw from './search-paw.png';
-// import Footer from './Footer';
+import { storeToken, getToken } from '../../token';
+
 
 const ShowDogDetail = ({dog}) => {
   const { name, sex, description, age, size, photo, shelter_id } = dog

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      render json: {a: 'hi', text: user.access_token, status: 200}
+      render json: {accessToken: user.access_token, status: 200}
     else
       render json: {error: "Email and password combination are invalid", status: 422}
     end

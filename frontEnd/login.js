@@ -8,8 +8,8 @@ import { StyleSheet,
   View
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { storeToken, getToken } from './token';
 
-const ACCESS_TOKEN = 'access_token';
 
 class Login extends Component {
   constructor(){
@@ -21,23 +21,6 @@ class Login extends Component {
       error: ""
     }
   }
-  async storeToken(accessToken) {
-    try {
-      await AsyncStorage.setItem(ACCESS_TOKEN, accessToken);
-      this.getToken();
-    } catch(error){
-      console.log("something went wrong")
-    }
-  }
-
-  async getToken() {
-    try {
-      return await AsyncStorage.getItem(ACCESS_TOKEN);
-    } catch(error){
-      console.log("something went wrong")
-    }
-  }
-
 
   onLoginPressed() {
       {
@@ -55,10 +38,11 @@ class Login extends Component {
         })
       })
       .then( (res) => {
+        console.log(res)
         if (res.status >= 200 && res.status < 300) {
         this.setState({error: ""});
-        let accessToken = JSON.parse(res._bodyText).text;
-        this.storeToken(accessToken);
+        let accessToken = JSON.parse(res._bodyText).accessToken;
+        storeToken(ACCESS_TOKEN, accessToken);
         console.log("res token: " + accessToken);
         Actions.form();
       } else {
