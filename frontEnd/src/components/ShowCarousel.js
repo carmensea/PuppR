@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
-  ScrollView, 
+  ScrollView,
   Dimensions
 } from 'react-native';
 import Carousel from 'react-native-looped-carousel';
@@ -30,8 +30,6 @@ export default class CarouselExample extends Component {
   }
 
   renderDogs() {
-    console.log(this.props)
-    console.log(this.props.data)
     return this.props.data.map((dog, i) => {
       return (
         <ScrollView>

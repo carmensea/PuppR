@@ -12,48 +12,44 @@ import {
 } from 'react-native';
 import Form from './src/components/Form';
 import DogIndex from './src/components/DogIndex';
-import TabIcon from './src/components/TabIcon';
+import Register from './register';
+import Login from './login';
+import ViewFavorites from './src/components/ViewFavorites';
 
 const frontEnd = () => (
   <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle}>
-    <Scene key="root" hideNavBar={true}>
-    {/* this is the tabs*/}
-      <Scene
-      key="tabbar"
-      tabs={true}
-      tabBarStyle={{ backgroundColor: '#FFFFFF'}}
-      >
-    {/* this the bar*/}
-      <Scene key="favs" title="Favs" icon={TabIcon}>
-        <Scene
-          key="favorites"
-          component={DogIndex}
-          title="PuppR"
-          initial
-        />
-        <Scene
-          key="show"
-          component={ShowFavoriteDogDetail}
-          title="PuppR"
-        />
-    {/* this closes bar*/}
-      </Scene>
-    <Scene key="fillform" title="Fill Form" icon={TabIcon}>
-        <Scene
-          key="form"
-          component={Form}
-          title="PuppR"
-          initial
-        />
-        <Scene
-          key="flip"
-          component={CarouselExample}
-          title="PuppR"
-        />
-      {/* this closes bar*/}
-      </Scene>
-      {/* this closes tabs*/}
-      </Scene>
+
+    <Scene key="root">
+    <Scene
+      key="form"
+      component={Form}
+      title="PuppR"
+    />
+    <Scene
+      key="flip"
+      component={CarouselExample}
+      title="PuppR"
+    />
+    <Scene
+      key="favorites"
+      component={DogIndex}
+      title="PuppR"
+    />
+
+    <Scene
+      key="show"
+      component={ShowFavoriteDogDetail}
+      title="PuppR"
+    />
+   <Scene
+     key="register"
+     component={Register}
+    initial
+   />
+  <Scene
+    key="login"
+    component={Login}
+  />
     </Scene>
   </Router>
   );
@@ -63,7 +59,7 @@ const styles = {
     height: 90
   },
   navBarTitle: {
-    color: '#598ED3',
+    color: '#7EA8BE',
     fontSize: 45,
     fontFamily: 'Helvetica',
     fontWeight: '500'

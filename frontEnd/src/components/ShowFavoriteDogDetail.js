@@ -1,10 +1,14 @@
 import React, { Component }  from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import { View, Text, Image, ScrollView , TouchableOpacity } from 'react-native';
 import ShowCard from './ShowCard';
 import ShowCardSection from './ShowCardSection';
 import DogContactInfo from './DogContactInfo';
 import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
+import unmatchPaw from './unmatch-paw.png';
+import faves from './faves.jpg';
+import searchPaw from './search-paw.png';
+
 
 class ShowFavoriteDogDetail extends Component {
   constructor(props) {
@@ -20,6 +24,11 @@ class ShowFavoriteDogDetail extends Component {
      .then(response => this.setState({ dog: response.data.dog, shelter: response.data.shelter }));
    }
 
+   unlikeDog = () => {
+    axios.delete('http://localhost:3000/dogs/' + this.props.id)
+     .then(Actions.favorites);
+   };
+
  render(){
   return (
     <ScrollView>
@@ -29,23 +38,41 @@ class ShowFavoriteDogDetail extends Component {
           <Text style={styles.pageHeadlineStyle}>{this.state.dog.name}</Text>
         </View>
 
+        <View>
+          <Text style={styles.shelterInfoStyle}>
+            Adopt Me Here: {this.state.shelter.address}{"\n"}
+            Phone: {this.state.shelter.phone}
+          </Text>
+        </View>
+
         <View style={styles.dogPictureContainer}>
           <Image source={{ uri: this.state.dog.photo }} style={styles.dogPicture}/>
         </View>
 
       </ShowCardSection>
-      <View>
-        <Text style={styles.shelterInfoStyle}>
-        Adopt Me Here: {this.state.shelter.address}{"\n"}
-        Phone: {this.state.shelter.phone}</Text>
+
+       <View style={styles.iconStyle}>
+        <TouchableOpacity onPress={() => Actions.favorites()}>
+          <Image style={{width: 50, height: 50}} source={faves} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => Actions.form()}>
+          <Image style={{width: 50, height: 50}} source={searchPaw} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.unlikeDog()} >
+          <Image style={{width: 50, height: 50}} source={unmatchPaw} />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.aboutHeaderContainer}>
         <Text style={styles.aboutHeaderStyle}>About {this.state.dog.name}</Text>
       </View>
 
+      <TouchableOpacity onPress={() => this.unlikeDog()} >
+          <Image style={{width: 50, height: 50}} source={unmatchPaw} />
+        </TouchableOpacity>
+
       <View>
-        <Text>{this.state.dog.description}</Text>
+        <Text style={styles.descriptionStyle}>{this.state.dog.description}</Text>
       </View>
 
     </ShowCard>
@@ -71,9 +98,7 @@ const styles = {
   },
   dogPictureContainer: {
     flexDirection: 'row',
-    justifyContent: 'flex-start',
-    paddingLeft: 35,
-    paddingBottom: 20
+    justifyContent: 'center'
   },
   dogPicture: {
     width: 365,
@@ -81,7 +106,10 @@ const styles = {
     resizeMode: 'contain'
   },
   shelterInfoStyle: {
-    textAlign: 'center'
+    textAlign: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    color: '#838887'
   },
   aboutHeaderContainer: {
     flexDirection: 'column',
@@ -90,9 +118,17 @@ const styles = {
   },
   aboutHeaderStyle: {
     fontSize: 25,
-    fontWeight: '300'
+    fontWeight: '300',
+    color: '#AA95DC'
+  },
+  descriptionStyle: {
+    color: '#838887'
+  },
+  iconStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingBottom: 10
   }
-
 };
 
 export default ShowFavoriteDogDetail;

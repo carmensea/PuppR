@@ -18,11 +18,13 @@ class ShowDogList extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.background}>
         {this.renderDogs()}
       </View>
     );
   }
 }
+
+
 
 export default ShowDogList;

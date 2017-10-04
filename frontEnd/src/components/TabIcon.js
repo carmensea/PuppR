@@ -6,9 +6,10 @@ class TabIcon extends Component {
 render(){
   return (
     <View>
-      <Text></Text>
+      <Text>{this.props.title}</Text>
     </View>
     );
   }
 };
+
 export default TabIcon;
