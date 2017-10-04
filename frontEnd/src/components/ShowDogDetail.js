@@ -8,10 +8,11 @@ import { Actions } from 'react-native-router-flux';
 import pawHeart from './heart-paw.png';
 
 const ShowDogDetail = ({dog}) => {
-  const { name, sex, description, age, size, photo, shelter_id } = dog
+  const { name, sex, description, age, size, photo, shelter_id, nextPage } = dog
 
   const likeDog = () => {
     axios.post('http://localhost:3000/dogs', dog)
+    nextPage()
   }
 
   return (
