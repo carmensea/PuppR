@@ -21,9 +21,17 @@ class Register extends Component {
     }
   }
 
-  async onRegisterPressed() {
+  async storeToken(accessToken) {
     try {
-      let response = await fetch('http://localhost:3000/users', {
+      await AsyncStorage.setItem(ACCESS_TOKEN, accessToken);
+      this.getToken();
+    } catch(error){
+      console.log("something went wrong")
+    }
+  }
+
+  async onRegisterPressed() {
+    { fetch('http://localhost:3000/users', {
         method: "POST",
         headers: {
           'Accept': 'application/json',
@@ -38,18 +46,19 @@ class Register extends Component {
           }
         })
       })
-      .then( () => {
+      .then( (res) => {
+        if (res.status >= 200 && res.status < 300) {
+        this.setState({error: ""});
+        let accessToken = JSON.parse(res._bodyText).text;
+        this.storeToken(accessToken);
+        console.log("res token: " + accessToken);
         Actions.form();
-      })
-
-      let res = await response.text();
-
-      if(response.status >= 200 && response.status < 300){
       } else {
-          let errors = res;
-          throw errors;
+        console.log("fuck")
       }
-    } catch(errors) {
+    })
+      .catch(errors => {
+        console.log(errors)
       console.log("catch errors: " + errors);
       let formErrors = JSON.parse(errors);
       let errorsArray = [];
@@ -61,8 +70,10 @@ class Register extends Component {
         }
       }
       this.setState({errors: errorsArray});
-    }
+    })
   }
+  }
+
   render() {
     return (
       <View style={styles.container}>

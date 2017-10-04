@@ -10,9 +10,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
       if @user.save
         p @user.access_token
-        render json: @user.access_token, status: 201
+        render json: {@user.access_token, status: 201}
       else
-        render json: @user.errors, status: 422
+        render json: {@user.errors, status: 422}
       end
   end
 

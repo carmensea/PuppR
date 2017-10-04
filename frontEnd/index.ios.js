@@ -45,11 +45,11 @@ const frontEnd = () => (
    <Scene
      key="register"
      component={Register}
+    initial
    />
   <Scene
     key="login"
     component={Login}
-    initial
   />
     </Scene>
   </Router>
