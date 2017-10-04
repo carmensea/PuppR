@@ -17,14 +17,8 @@ import ViewFavorites from './src/components/ViewFavorites';
 
 const frontEnd = () => (
   <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle}>
-    <Scene key="root">
-       <Scene
-          key="seefavoties"
-          component={ViewFavorites}
-          title="PuppR"
-          initial
-        />
 
+    <Scene key="root">
         <Scene
           key="favorites"
           component={DogIndex}
@@ -36,7 +30,6 @@ const frontEnd = () => (
           component={ShowFavoriteDogDetail}
           title="PuppR"
         />
-
         <Scene
           key="form"
           component={Form}
@@ -49,17 +42,22 @@ const frontEnd = () => (
           component={CarouselExample}
           title="PuppR"
         />
+
       {/* this closes bar*/}
+
       </Scene>
   </Router>
   );
+
+
+
 
 const styles = {
   navBar: {
     height: 90
   },
   navBarTitle: {
-    color: '#598ED3',
+    color: '#7EA8BE',
     fontSize: 45,
     fontFamily: 'Helvetica',
     fontWeight: '500'

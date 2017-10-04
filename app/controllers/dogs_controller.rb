@@ -9,7 +9,7 @@ class DogsController < ApplicationController
     p "*" * 100
     p Dog.all.include?(@dog)
     #this is saying if the dogs name exists and the description, its false
-    if Dog.all.include?(@dog)
+    if !Dog.find_by(dog_details)
       @dog.save
       Favorite.create(dog_id: @dog.id, user_id: @user.id)
     else
@@ -34,8 +34,6 @@ class DogsController < ApplicationController
     p params
     @user = User.first
     @favorite = @user.favorites.find_by(dog_id: params[:id])
-    p @favorite
-
     @favorite.delete
   end
 
