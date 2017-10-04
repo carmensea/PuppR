@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Image } from 'react-native';
+import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
 import DogDetail from './DogDetail';
 import axios from 'axios';
+import searchPaw from './search-paw.png';
+import { Actions } from 'react-native-router-flux';
 
 class DogIndex extends Component {
 
   state = {
-          dogs: []
+    dogs: []
   };
 
   componentWillMount() {
@@ -18,50 +20,36 @@ class DogIndex extends Component {
     return this.state.dogs.map((dog, i) =>
       <DogDetail key={i} dog={dog} />
     );
-  } 
+  }
 
   render() {
     return (
         <View>
-          <Text style={styles.pageHeadlineStyle}>Paw-tential Soulmates</Text>
+        <TouchableOpacity onPress={() => Actions.form()}>
+          <Image style={{width: 50, height: 50}} source={searchPaw} />
+        </TouchableOpacity>
           <ScrollView>
-          <View>{this.renderDogs()}</View>
+            <Text style={styles.headlineContainerStyle}>Paw-tential Soulmates</Text>
+            <View>
+              {this.renderDogs()}
+            </View>
           </ScrollView>
         </View>
-      
+
     );
   }
 };
 
 const styles = {
-    pageHeadlineStyle: {
+    headlineContainerStyle: {
+      fontSize: 35,
+      color: '#FFFFFF',
       textAlign: 'center',
-      fontSize: 30,
-      alignItems: 'center',
-      height: 100,
+      height: 80,
       paddingTop: 20,
-      elevation: 2,
-      position: 'relative'
-    },
-    eachDogNameStyle: {
-      paddingLeft: 10,
-      fontSize: 20
-    },
-    eachDogNameContainer: {
-      flex: 15,
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignText: 'center'
+      fontWeight: '300',
+      backgroundColor: '#DFC8C3'
     }
   };
 
-
 export default DogIndex;
-
-// renderDogs(){
-//     this.state.dogs.map((dog) => {
-//       return <DogDetail key={dog.id} dog={dog} />
-//     })
-//   }
-
-

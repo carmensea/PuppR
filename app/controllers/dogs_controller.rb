@@ -5,17 +5,20 @@ class DogsController < ApplicationController
   def create
     @dog = Dog.new(dog_details)
     @user = User.first
-
-    if @dog.save
+    p @dog
+    p @user
+    if !@user.dogs.include?(@dog)
+      @dog.save
       Favorite.create(dog_id: @dog.id, user_id: @user.id)
     else
-      p @dog
+      p 'did not save'
     end
   end
 
   def index
     @user = User.first
-    render json: @user.dogs
+    render json: @user.dogs.order('created_at DESC')
+
   end
 
   def show
@@ -24,6 +27,14 @@ class DogsController < ApplicationController
     dog_shelter_response = {dog: @dog,
       shelter: @shelter}
     render json: dog_shelter_response
+  end
+
+  def destroy
+    p params
+    @user = User.first
+    @favorite = @user.favorites.find_by(dog_id: params[:id])
+    p @favorite
+    @favorite.delete
   end
 
   private
