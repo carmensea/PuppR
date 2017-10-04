@@ -15,7 +15,8 @@ class DogsController < ApplicationController
 
   def index
     @user = User.first
-    render json: @user.dogs
+    render json: @user.dogs.order('created_at DESC')
+
   end
 
   def show
@@ -24,6 +25,14 @@ class DogsController < ApplicationController
     dog_shelter_response = {dog: @dog,
       shelter: @shelter}
     render json: dog_shelter_response
+  end
+
+  def destroy
+    p params
+    @user = User.first
+    @favorite = @user.favorites.find_by(dog_id: params[:id])
+    p @favorite
+    @favorite.delete
   end
 
   private

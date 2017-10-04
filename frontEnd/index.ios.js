@@ -16,20 +16,12 @@ import TabIcon from './src/components/TabIcon';
 
 const frontEnd = () => (
   <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle}>
-    <Scene key="root" hideNavBar={true}>
-    {/* this is the tabs*/}
-      <Scene
-      key="tabbar"
-      tabs={true}
-      tabBarStyle={{ backgroundColor: '#FFFFFF'}}
-      >
-    {/* this the bar*/}
-      <Scene key="favs" title="Favs" icon={TabIcon}>
+
+    <Scene key="root">
         <Scene
           key="favorites"
           component={DogIndex}
           title="PuppR"
-          initial
         />
         <Scene
           key="show"
@@ -37,8 +29,6 @@ const frontEnd = () => (
           title="PuppR"
         />
     {/* this closes bar*/}
-      </Scene>
-    <Scene key="fillform" title="Fill Form" icon={TabIcon}>
         <Scene
           key="form"
           component={Form}
@@ -50,20 +40,21 @@ const frontEnd = () => (
           component={CarouselExample}
           title="PuppR"
         />
+
       {/* this closes bar*/}
-      </Scene>
-      {/* this closes tabs*/}
-      </Scene>
     </Scene>
   </Router>
   );
+
+
+
 
 const styles = {
   navBar: {
     height: 90
   },
   navBarTitle: {
-    color: '#598ED3',
+    color: '#7EA8BE',
     fontSize: 45,
     fontFamily: 'Helvetica',
     fontWeight: '500'
