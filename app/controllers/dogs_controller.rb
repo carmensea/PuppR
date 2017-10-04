@@ -4,12 +4,11 @@ class DogsController < ApplicationController
 
   def create
     @dog = Dog.new(dog_details)
-    @user = User.find_by(access_token[:access_token])
+    @user = User.find_by(access_token: params[:access_token])
 
-    p "*" * 100
-    p Dog.all.include?(@dog)
-    #this is saying if the dogs name exists and the description, its false
-    if !Dog.find_by(dog_details)
+    p params
+    @favorited_dog = Dog.find_by(dog_details)
+    if !@user.dogs.include?(@favorited_dog)
       @dog.save
       Favorite.create(dog_id: @dog.id, user_id: @user.id)
     else
@@ -18,7 +17,8 @@ class DogsController < ApplicationController
   end
 
   def index
-    @user = User.first
+    p params
+    @user = User.find_by(access_token: params[:access_token])
     render json: @user.dogs.order('created_at DESC')
   end
 

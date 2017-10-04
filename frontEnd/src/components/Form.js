@@ -5,6 +5,9 @@ import { Actions } from 'react-native-router-flux';
 import CarouselExample from './ShowCarousel';
 import axios from 'axios';
 import faves from './faves.jpg';
+import { storeToken, getToken } from '../../token';
+
+ACCESS_TOKEN = 'access_token';
 import logo from './logo.png';
 
 class Form extends Component {
@@ -16,13 +19,17 @@ class Form extends Component {
   constructor(props){
     super(props);
     this.state = {
-      size: '',
-      age: '',
-      sex: '',
+      size: 'L',
+      age: 'Young',
+      sex: 'F',
       results: [],
-      location: ''
+      location: '94131',
+      access_token: ''
     };
     this.dogSearcher = this.dogSearcher.bind(this);
+    getToken().then((result) =>
+      this.state.access_token = result
+    )
   };
 
   dogSearcher = () => {
@@ -31,14 +38,16 @@ class Form extends Component {
         age: this.state.age,
         size: this.state.size,
         sex: this.state.sex,
-        location: this.state.location
+        location: this.state.location,
+        access_token: this.state.access_token
       }
     })
     .then( (response) => {
       this.setState({
-        results: response.data
+        results: response.data,
+        access_token: response.config.params.access_token
       });
-      Actions.flip(dogs=this.state.results);
+      Actions.flip({dogs: this.state.results, token: this.state.access_token});
     })
     .catch(error => console.log(error))
   }
