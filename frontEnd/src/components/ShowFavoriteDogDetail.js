@@ -64,12 +64,8 @@ class ShowFavoriteDogDetail extends Component {
       </View>
 
       <View style={styles.aboutHeaderContainer}>
-        <Text style={styles.aboutHeaderStyle}>About {this.state.dog.name}</Text>
+        <Text style={styles.aboutHeaderStyle}>About Me</Text>
       </View>
-
-      <TouchableOpacity onPress={() => this.unlikeDog()} >
-          <Image style={{width: 50, height: 50}} source={unmatchPaw} />
-        </TouchableOpacity>
 
       <View>
         <Text style={styles.descriptionStyle}>{this.state.dog.description}</Text>

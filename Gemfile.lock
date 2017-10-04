@@ -162,7 +162,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  bcrypt (~> 3.1.7)
+  bcrypt (~> 3.1.11)
   byebug
   dotenv-rails
   faker
@@ -181,4 +181,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.16.0.pre.2
+   1.15.4
