@@ -41,7 +41,7 @@ export default class CarouselExample extends Component {
             style={this.state.size}
             key={i}
           >
-            <ShowDogDetail dog={dog}/>
+            <ShowDogDetail dog={dog} token={this.state.token}/>
           </View>
         </ScrollView>
       );

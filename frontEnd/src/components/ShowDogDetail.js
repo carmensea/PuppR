@@ -11,7 +11,8 @@ import searchPaw from './search-paw.png';
 import { storeToken, getToken } from '../../token';
 
 
-const ShowDogDetail = ({dog}) => {
+const ShowDogDetail = ({dog}, {token}) => {
+  console.log(token)
   const { name, sex, description, age, size, photo, shelter_id } = dog
 
   const likeDog = () => {
