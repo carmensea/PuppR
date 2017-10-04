@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
-import { Text, View, Picker, AsyncStorage, Button, TextInput } from 'react-native';
+import { Text, View, Picker, Button, TextInput, AsyncStorage, TouchableOpacity, Image } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 import { Actions } from 'react-native-router-flux';
 import CarouselExample from './ShowCarousel';
 import axios from 'axios';
+import faves from './faves.jpg';
+
 
 class Form extends Component {
+  static onEnter = () => {
+    Actions.refresh()
+  }
+
+
   constructor(props){
     super(props);
     this.state = {
@@ -72,6 +79,7 @@ render(){
           textAlign="center"
           keyboardType="numeric"
           selectionColor="#E9E9EF"
+          itemColor="#9e59d3"
           animationDuration={5}
           maxLength={5}
           placeholder="Enter Your Zipcode"
@@ -97,25 +105,32 @@ render(){
     onChangeText={(value, index, data) => this.setState({sex:value})}
     />
 
-    <Button title="Submit" color="#D3598E"onPress={() => this.dogSearcher()}/>
+    <Button title="Submit" color="#C2948A" onPress={() => this.dogSearcher()}/>
+
+    <View>
+    </View>
+    <TouchableOpacity onPress={() => Actions.favorites()}>
+      <Image style={{width: 50, height: 50}} source={faves} />
+    </TouchableOpacity>
+    <Text style={{color: '#838887'}}>See Faves</Text>
+
 </View>
     );
   };
 };
 
 const styles = {
-  selectionContainer: {
-  },
   locationContainer: {
     marginTop: 100,
     alignItems: 'center'
   },
   locationTitle: {
     fontSize: 18,
-    color: '#8ED359'
+    color: '#BBB193'
   },
   formContainer: {
-    padding: 20
+    backgroundColor: 'white',
+    flex: 1
   }
 };
 

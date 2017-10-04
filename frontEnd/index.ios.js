@@ -1,10 +1,8 @@
-import Header from './src/components/Header';
 import ShowDogList from './src/components/ShowDogList';
 import CarouselExample from './src/components/ShowCarousel';
 import ShowFavoriteDogDetail from './src/components/ShowFavoriteDogDetail';
 import Button from './src/components/ShowButton';
 import { Router, Scene } from 'react-native-router-flux';
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -12,14 +10,15 @@ import {
   Text,
   View
 } from 'react-native';
-
 import Form from './src/components/Form';
 import DogIndex from './src/components/DogIndex';
 import Register from './register';
 import Login from './login';
+import ViewFavorites from './src/components/ViewFavorites';
 
 const frontEnd = () => (
   <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle}>
+
     <Scene key="root">
     <Scene
       key="form"
@@ -60,10 +59,10 @@ const styles = {
     height: 90
   },
   navBarTitle: {
-    color: '#598ED3',
+    color: '#7EA8BE',
     fontSize: 45,
     fontFamily: 'Helvetica',
-    fontWeight: '300'
+    fontWeight: '500'
   }
 
 };

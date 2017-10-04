@@ -6,16 +6,20 @@ class DogsController < ApplicationController
     @dog = Dog.new(dog_details)
     @user = User.find_by(access_token[:access_token])
 
-    if @dog.save
+    p "*" * 100
+    p Dog.all.include?(@dog)
+    #this is saying if the dogs name exists and the description, its false
+    if !Dog.find_by(dog_details)
+      @dog.save
       Favorite.create(dog_id: @dog.id, user_id: @user.id)
     else
-      p @dog
+      p "no"
     end
   end
 
   def index
     @user = User.first
-    render json: @user.dogs
+    render json: @user.dogs.order('created_at DESC')
   end
 
   def show
@@ -24,6 +28,13 @@ class DogsController < ApplicationController
     dog_shelter_response = {dog: @dog,
       shelter: @shelter}
     render json: dog_shelter_response
+  end
+
+  def destroy
+    p params
+    @user = User.first
+    @favorite = @user.favorites.find_by(dog_id: params[:id])
+    @favorite.delete
   end
 
   private

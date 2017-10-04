@@ -11,7 +11,7 @@ const DogDetail = ({ dog }) => {
 		<View style={eachDogStyle}>
         	<View style={eachDogPictureContainerStyle}><Image source={{ uri: photo }} style={eachDogPictureStyle}/></View>
           <View style={eachDogNameContainerStyle}>
-          		<Button style={eachDogNameStyle} title={name} onPress={() => Actions.show(dog)}/>
+          		<Button color={'#28536B'} style={eachDogNameStyle} title={name} onPress={() => Actions.show(dog)}/>
         	    <Text style={eachDogNameStyle}>{sex}</Text>
               <Text style={eachDogNameStyle}>{age}</Text>
           </View>
@@ -42,7 +42,8 @@ const styles = {
     },
     eachDogNameStyle: {
       paddingLeft: 10,
-      fontSize: 20
+      fontSize: 20,
+      color: '#BBB193'
     }
   };
 
