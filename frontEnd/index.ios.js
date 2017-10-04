@@ -18,7 +18,7 @@ import ViewFavorites from './src/components/ViewFavorites';
 const frontEnd = () => (
   <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle}>
 
-    <Scene key="root">
+    <Scene key="root" hideNavBar={true}>
         <Scene
           key="favorites"
           component={DogIndex}
