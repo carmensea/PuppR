@@ -4,7 +4,7 @@ class DogsController < ApplicationController
 
   def create
     @dog = Dog.new(dog_details)
-    @user = User.first
+    @user = User.find_by(access_token[:access_token])
 
     p "*" * 100
     p Dog.all.include?(@dog)
