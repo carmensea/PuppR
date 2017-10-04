@@ -33,9 +33,15 @@ class PetFinderAdapter < ApplicationRecord
     def creation_details(hash)
       shelter = shelter_exist?(hash)
       if shelter.blank?
+        @response = HTTParty.get("#{ENV['PETFINDER_URL']}/shelter.get",
+                                 { query:
+                                   {"key" => "#{@api_key}",
+                                    "id" => "#{hash["shelter_id"]}"
+                                 }
+        })
         location = "#{hash["address"]} " + "#{hash["city"]}, " + "#{hash["state"]} "
         + "#{hash[:zip]}"
-        shelter = Shelter.create(shelter_id: hash["shelter_id"], phone: hash["phone"], address: location)
+        shelter = Shelter.create(name: @response["petfinder"]["shelter"]["name"], shelter_id: hash["shelter_id"], phone: hash["phone"], address: location)
       end
 
       make_dog(hash, shelter)
