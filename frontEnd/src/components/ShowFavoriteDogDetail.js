@@ -20,12 +20,12 @@ class ShowFavoriteDogDetail extends Component {
   }
 
   componentWillMount() {
-     axios.get('https://puppr-app.herokuapp.com/dogs/' + this.props.id)
+     axios.get('http://localhost:3000/dogs/' + this.props.id)
      .then(response => this.setState({ dog: response.data.dog, shelter: response.data.shelter }));
    }
 
    unlikeDog = () => {
-    axios.delete('https://puppr-app.herokuapp.com/dogs/' + this.props.id)
+    axios.delete('http://localhost:3000/dogs/' + this.props.id)
      .then(Actions.favorites);
    };
 
