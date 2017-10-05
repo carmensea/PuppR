@@ -29,7 +29,6 @@ const frontEnd = () => (
       key="form"
       component={Form}
       title="PuppR"
-      initial
       />
     <Scene
       key="flip"
@@ -45,11 +44,11 @@ const frontEnd = () => (
    <Scene
      key="register"
      component={Register}
+      initial
    />
   <Scene
     key="login"
     component={Login}
-    initial
   />
     </Scene>
   </Router>

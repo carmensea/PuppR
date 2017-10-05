@@ -10,6 +10,7 @@ import { StyleSheet,
 import { Actions } from 'react-native-router-flux';
 import { storeToken, getToken } from './token';
 
+ACCESS_TOKEN = 'access_token';
 
 class Login extends Component {
   constructor(){
@@ -18,7 +19,7 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      error: ""
+      errors: ""
     }
   }
 
@@ -43,16 +44,14 @@ class Login extends Component {
         this.setState({error: ""});
         let accessToken = JSON.parse(res._bodyText).accessToken;
         storeToken(ACCESS_TOKEN, accessToken);
-        console.log("res token: " + accessToken);
         Actions.form();
       } else {
-        let error = res;
-        throw error;
+        let error = JSON.parse(res._bodyText).error;
+        this.setState({errors: error})
       }
     })
-      .catch(error => {
-        this.setState({error: error});
-        console.log(error);
+      .catch(errors => {
+        this.setState({errors: errors});
       })
     }
   }
@@ -78,13 +77,11 @@ class Login extends Component {
             Login
           </Text>
         </TouchableHighlight>
-
-
+        <Text style={styles.error}>{this.state.errors}< /Text>
       </View>
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {

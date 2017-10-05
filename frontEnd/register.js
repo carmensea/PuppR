@@ -49,12 +49,14 @@ class Register extends Component {
         storeToken(ACCESS_TOKEN, accessToken);
         console.log("res token: " + accessToken);
         Actions.form();
-      } 
+      } else {
+        let error = JSON.parse(res._bodyText).error[0];
+        this.setState({errors: error})
+      }
     })
       .catch(errors => {
-        console.log(errors)
       console.log("catch errors: " + errors);
-      let formErrors = JSON.parse(errors);
+      let formErrors = JSON.parse(errors._bodyText).error;
       let errorsArray = [];
       for(let key in formErrors) {
         if(formErrors[key].length > 1) {
@@ -106,14 +108,19 @@ class Register extends Component {
 }
 
 const Errors = (props) => {
+  console.log(props)
   return (
-    <View>
+    <View style={styles.errorContainer}>
     {props.errors.map((error, i) => <Text key={i} style={styles.error}>{error}</Text>)}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  errorContainer: {
+    flexDirection: "column",
+    justifyContent: "space-around",
+  },
   container: {
     flex: 1,
     justifyContent: 'flex-start',
