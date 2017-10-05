@@ -15,7 +15,7 @@ class DogIndex extends Component {
 
   componentWillMount() {
       getToken().then((result) =>
-      axios.get('http://localhost:3000/dogs', {
+      axios.get('https://puppr-app.herokuapp.com/dogs', {
         params: {
           access_token: result
         }
