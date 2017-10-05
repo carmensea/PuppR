@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root 'petfinder#index'
 
   get 'petfinder/index'
   post '/login', to: "sessions#create"
