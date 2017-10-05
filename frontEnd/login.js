@@ -86,7 +86,7 @@ class Login extends Component {
             </Text>
           </TouchableHighlight>
 
-          <Text style={styles.error}> {this.state.errors} < /Text>
+          <Text style={styles.error}> {this.state.errors}</Text>
 
           <TouchableHighlight onPress={() => Actions.home()} style={styles.homeButtonStyle}>
             <Text style={styles.homeButtonText}>
