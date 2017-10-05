@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "env": {
+    "JAVA_HOME": "/Users/auser/.jenv/versions/1.8.0.112"
+  },
+  "configurations": [
+    {
+      "name": "Java",
+      "type": "java",
+      "request": "launch",
+      "stopOnEntry": true,
+      "cwd": "${fileDirname}",
+      "startupClass": "${fileBasename}",
+      "options": [
+        "-classpath",
+        "\"${fileDirname};.\""
+      ]
+    },
+    {
+      "name": "Java Console App",
+      "type": "java",
+      "request": "launch",
+      "stopOnEntry": true,
+      "cwd": "${fileDirname}",
+      "startupClass": "${fileBasename}",
+      "options": [
+        "-classpath",
+        "\"${fileDirname};.\""
+      ],
+      "externalConsole": true
+    }
+  ]
+}
