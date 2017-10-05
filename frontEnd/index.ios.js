@@ -1,4 +1,3 @@
-import ShowDogList from './src/components/ShowDogList';
 import CarouselExample from './src/components/ShowCarousel';
 import ShowFavoriteDogDetail from './src/components/ShowFavoriteDogDetail';
 import Button from './src/components/ShowButton';

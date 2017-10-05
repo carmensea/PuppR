@@ -28,7 +28,7 @@ class Login extends Component {
 
   onLoginPressed() {
       {
-      fetch('http://localhost:3000/login', {
+      fetch('https://puppr-app.herokuapp.com/login', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

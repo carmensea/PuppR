@@ -31,7 +31,7 @@ class Register extends Component {
   }
 
   async onRegisterPressed() {
-    { fetch('http://localhost:3000/users', {
+    { fetch('https://puppr-app.herokuapp.com/users', {
         method: "POST",
         headers: {
           'Accept': 'application/json',
