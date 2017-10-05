@@ -8,6 +8,7 @@ import { Actions } from 'react-native-router-flux';
 import unmatchPaw from './unmatch-paw.png';
 import faves from './faves.jpg';
 import searchPaw from './search-paw.png';
+import { getToken } from '../../token';
 
 
 class ShowFavoriteDogDetail extends Component {
@@ -15,9 +16,13 @@ class ShowFavoriteDogDetail extends Component {
     super(props);
     this.state = {
       dog:"",
-      shelter: ""
+      shelter: "",
+      access_token: ""
     };
-  }
+    getToken().then((result) =>
+      this.state.access_token = result
+    )
+  };
 
   componentWillMount() {
      axios.get('https://puppr-app.herokuapp.com/dogs/' + this.props.id)
@@ -25,7 +30,11 @@ class ShowFavoriteDogDetail extends Component {
    }
 
    unlikeDog = () => {
-    axios.delete('https://puppr-app.herokuapp.com/dogs/' + this.props.id)
+    axios.delete('https://puppr-app.herokuapp.com/dogs/' + this.props.id, {
+      params: {
+        access_token: this.state.access_token
+      }
+    })
      .then(Actions.favorites);
    };
 

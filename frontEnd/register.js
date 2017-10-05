@@ -77,8 +77,9 @@ class Register extends Component {
 
   render() {
     return (
+      <View style={styles.formContainer}>
+      <ScrollView >
       <View style={styles.locationContainer}>
-      <ScrollView>
        <Image style={{width: 90, height: 50}} source={pawLogo} />
         <Image style={{width: 200, height: 50}} source={wordLogo} />
         <Text style={styles.heading}>
@@ -116,6 +117,7 @@ class Register extends Component {
             Homepage
           </Text>
         </TouchableHighlight>
+        </View>
       </ScrollView>
       </View>
     );
@@ -135,6 +137,10 @@ const styles = StyleSheet.create({
   errorContainer: {
     flexDirection: "column",
     justifyContent: "space-around",
+  },
+  formContainer: {
+    backgroundColor: 'white',
+    flex: 1
   },
   locationContainer: {
     paddingTop: '25%',
