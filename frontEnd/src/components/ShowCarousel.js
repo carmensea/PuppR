@@ -47,12 +47,14 @@ export default class CarouselExample extends Component {
             style={this.state.size}
             key={i}
           >
+
             <ShowDogDetail dog={dog} token={token}/>
           </View>
         </ScrollView>
       );
     });
   }
+
 
   render() {
     return (

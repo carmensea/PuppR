@@ -48,6 +48,7 @@ class DogIndex extends Component {
             <View>
               {this.renderDogs()}
             </View>
+
           </ScrollView>
         </View>
 

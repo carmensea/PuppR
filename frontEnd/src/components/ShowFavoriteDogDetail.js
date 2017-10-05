@@ -31,18 +31,21 @@ class ShowFavoriteDogDetail extends Component {
 
  render(){
   return (
+    <View style={styles.pageStyle}>
     <ScrollView>
     <ShowCard>
       <ShowCardSection>
-        <View style={styles.headContentStyle}>
-          <Text style={styles.pageHeadlineStyle}>{this.state.dog.name}</Text>
-        </View>
+        <View style={styles.topInfo}>
+          <View style={styles.headContentStyle}>
+            <Text style={styles.pageHeadlineStyle}>{this.state.dog.name}</Text>
+          </View>
 
-        <View>
-          <Text style={styles.shelterInfoStyle}>
-            Adopt Me Here: {this.state.shelter.address}{"\n"}
-            Phone: {this.state.shelter.phone}
-          </Text>
+          <View style={styles.shelterInfoContainer}>
+            <Text style={styles.shelterInfoStyle}>
+              Adopt Me Here: {this.state.shelter.address}{"\n"}
+              Phone: {this.state.shelter.phone}
+            </Text>
+          </View>
         </View>
 
         <View style={styles.dogPictureContainer}>
@@ -73,6 +76,7 @@ class ShowFavoriteDogDetail extends Component {
 
     </ShowCard>
     </ScrollView>
+    </View>
     );
   }
 }
@@ -80,6 +84,16 @@ class ShowFavoriteDogDetail extends Component {
 
 
 const styles = {
+  topInfo: {
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  pageStyle: {
+    paddingTop: 50,
+    backgroundColor: 'white',
+    flex: 1
+  },
   headContentStyle: {
     flexDirection: 'column',
     justifyContent: 'space-around',
@@ -88,24 +102,28 @@ const styles = {
   },
   pageHeadlineStyle: {
     fontSize: 40,
-    fontWeight: '300',
-    color: '#8ED359',
+    fontWeight: '400',
+    color: '#F39A63',
     textAlign: 'center'
   },
   dogPictureContainer: {
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'space-around'
   },
   dogPicture: {
     width: 365,
     height: 365,
     resizeMode: 'contain'
   },
+  shelterInfoContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   shelterInfoStyle: {
     textAlign: 'center',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    color: '#838887'
+    justifyContent: 'space-around',
+    color: '#838887',
+    fontSize: 16
   },
   aboutHeaderContainer: {
     flexDirection: 'column',
@@ -113,17 +131,20 @@ const styles = {
     alignItems: 'center'
   },
   aboutHeaderStyle: {
-    fontSize: 25,
-    fontWeight: '300',
-    color: '#AA95DC'
+    fontSize: 28,
+    fontWeight: '400',
+    color: '#63F3E2',
+    paddingTop: 25
   },
   descriptionStyle: {
-    color: '#838887'
+    color: '#838887',
+    paddingTop: 10,
+    paddingLeft: 15,
+    paddingRight: 15
   },
   iconStyle: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingBottom: 10
+    justifyContent: 'space-around'
   }
 };
 
