@@ -11,7 +11,7 @@ const DogDetail = ({ dog }) => {
 		<View style={eachDogStyle}>
         	<View style={eachDogPictureContainerStyle}><Image source={{ uri: photo }} style={eachDogPictureStyle}/></View>
           <View style={eachDogNameContainerStyle}>
-          		<Button color={'#28536B'} style={eachDogNameStyle} title={name} onPress={() => Actions.show(dog)}/>
+          		<Button color={'#52CEBF'} style={eachDogNameStyle} title={name} onPress={() => Actions.show(dog)}/>
         	    <Text style={eachDogNameStyle}>{sex}</Text>
               <Text style={eachDogNameStyle}>{age}</Text>
           </View>
@@ -22,7 +22,10 @@ const DogDetail = ({ dog }) => {
 const styles = {
    	eachDogStyle: {
       alignItems: 'flex-start',
-      flexDirection:'row'
+      flexDirection:'row',
+      borderBottomWidth: 1,
+      borderBottomColor: '#B8B8C4',
+      marginTop: 8
    	},
     eachDogPictureContainerStyle: {
       marginLeft: 10,
@@ -43,7 +46,7 @@ const styles = {
     eachDogNameStyle: {
       paddingLeft: 10,
       fontSize: 20,
-      color: '#BBB193'
+      color: '#BBB193',
     }
   };
 
