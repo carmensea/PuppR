@@ -21,7 +21,7 @@ class ShowDogDetail extends Component {
     this.likeDog = this.likeDog.bind(this);
   };
   likeDog = () => {
-    axios.post('http://localhost:3000/dogs', {
+    axios.post('https://puppr-app.herokuapp.com/dogs', {
         dog: this.props.dog,
         access_token: this.state.token
     })

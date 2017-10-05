@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       render json: {accessToken: user.access_token, status: 200}
     else
-      render json: {error: "Email and password combination are invalid", status: 422}
+      render json: {error: ["Email and password combination are invalid"]}, status: 422
     end
   end
 

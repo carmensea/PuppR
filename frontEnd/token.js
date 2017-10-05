@@ -13,7 +13,7 @@ export  async function storeToken(storageKey, accessToken) {
       await AsyncStorage.setItem(storageKey, accessToken);
       getToken();
     } catch(error){
-      console.log('error:', error)
+      console.log("AKJSG: " + error)
     }
   }
 

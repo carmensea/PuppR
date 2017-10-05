@@ -33,7 +33,7 @@ class Form extends Component {
   };
 
   dogSearcher = () => {
-    axios.get('http://localhost:3000/petfinder/index', {
+    axios.get('https://puppr-app.herokuapp.com/petfinder/index', {
       params: {
         age: this.state.age,
         size: this.state.size,
@@ -141,20 +141,22 @@ const styles = {
   },
   formContainer: {
     backgroundColor: 'white',
-    flex: 1
+    flex: 1,
+    paddingLeft: 15,
+    paddingRight: 15
   },
   imageStyle: {
-    width: 375,
+    width: '100%',
     height: 150,
     marginBottom: 10
   },
   buttonStyle: {
     borderWidth: 2,
     borderColor: '#F3E263',
-    marginLeft: 90,
-    marginRight: 90,
+    marginLeft: '20%',
+    marginRight: '20%',
     borderRadius: 5,
-    marginTop: 10
+    marginTop: '2%'
   }
 };
 

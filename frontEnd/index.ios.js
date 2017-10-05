@@ -1,4 +1,3 @@
-import ShowDogList from './src/components/ShowDogList';
 import CarouselExample from './src/components/ShowCarousel';
 import ShowFavoriteDogDetail from './src/components/ShowFavoriteDogDetail';
 import Button from './src/components/ShowButton';
@@ -15,6 +14,7 @@ import DogIndex from './src/components/DogIndex';
 import Register from './register';
 import Login from './login';
 import ViewFavorites from './src/components/ViewFavorites';
+import Homepage from './src/components/Homepage';
 
 const frontEnd = () => (
   <Router navigationBarStyle={styles.navBar} titleStyle={styles.navBarTitle}>
@@ -29,7 +29,6 @@ const frontEnd = () => (
       key="form"
       component={Form}
       title="PuppR"
-      initial
       />
     <Scene
       key="flip"
@@ -49,8 +48,14 @@ const frontEnd = () => (
   <Scene
     key="login"
     component={Login}
-    
   />
+
+   <Scene
+    key="home"
+    component={Homepage}
+    initial
+  />
+
     </Scene>
   </Router>
   );

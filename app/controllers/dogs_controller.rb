@@ -32,9 +32,9 @@ class DogsController < ApplicationController
 
   def destroy
     p params
-    @user = User.first
+    @user = User.find_by(access_token: params[:access_token])
     @favorite = @user.favorites.find_by(dog_id: params[:id])
-    @favorite.delete
+    @favorite.destroy
   end
 
   private

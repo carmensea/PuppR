@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :set_user
+  def index
+  end
 
   def new
     @user = User.new
@@ -9,10 +10,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
       if @user.save
-        p @user.access_token
         render json: {accessToken: @user.access_token, status: 201}
       else
-        render json: {error: @user.errors, status: 422}
+        render json: {error: [@user.errors.full_messages]}, status: 422
       end
   end
 
