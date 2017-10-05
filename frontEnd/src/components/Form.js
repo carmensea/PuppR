@@ -33,7 +33,7 @@ class Form extends Component {
   };
 
   dogSearcher = () => {
-    axios.get('https://puppr-app.herokuapp.com/petfinder/index', {
+    axios.get('http://localhost:3000/petfinder/index', {
       params: {
         age: this.state.age,
         size: this.state.size,

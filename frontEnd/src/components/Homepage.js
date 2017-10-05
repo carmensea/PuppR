@@ -40,16 +40,17 @@ const styles = {
   buttonStyle: {
     borderWidth: 2,
     borderColor: '#F3E263',
-    marginLeft: 90,
-    marginRight: 90,
+    flexBasis: '40%',
+    minWidth: 80,
+    maxWidth: 300,
     borderRadius: 5,
     marginTop: 10
   },
   buttonContainer: {
-    paddingRight: 50,
     paddingTop: 20,
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    width: '60%'
   }
 };
 
