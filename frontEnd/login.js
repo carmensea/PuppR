@@ -13,6 +13,7 @@ import { storeToken, getToken } from './token';
 import wordLogo from './src/components/word-logo.png';
 import pawLogo from './src/components/paw-logo.png';
 
+ACCESS_TOKEN = 'access_token';
 
 class Login extends Component {
   constructor(){
@@ -21,7 +22,7 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      error: ""
+      errors: ""
     }
   }
 
@@ -46,16 +47,14 @@ class Login extends Component {
         this.setState({error: ""});
         let accessToken = JSON.parse(res._bodyText).accessToken;
         storeToken(ACCESS_TOKEN, accessToken);
-        console.log("res token: " + accessToken);
         Actions.form();
       } else {
-        let error = res;
-        throw error;
+        let error = JSON.parse(res._bodyText).error;
+        this.setState({errors: error})
       }
     })
-      .catch(error => {
-        this.setState({error: error});
-        console.log(error);
+      .catch(errors => {
+        this.setState({errors: errors});
       })
     }
   }
@@ -63,38 +62,42 @@ class Login extends Component {
   render() {
     return (
       <View style={styles.locationContainer}>
-      <Image style={{width: 90, height: 50}} source={pawLogo} />
-        <Image style={{width: 200, height: 50}} source={wordLogo} />
-        <Text style={styles.heading}>
-          Login
-        </Text>
-        <TextInput
-          onChangeText={ (text)=> this.setState({email: text}) }
-          style={styles.input} placeholder="Email">
-        </TextInput>
-        <TextInput
-          onChangeText={ (text)=> this.setState({password: text}) }
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry={true}>
-        </TextInput>
-        <TouchableHighlight onPress={this.onLoginPressed.bind(this)} style={styles.buttonStyle}>
-          <Text style={styles.buttonText}>
-            Submit
+        <Image style={{width: 90, height: 50}} source={pawLogo} />
+          <Image style={{width: 200, height: 50}} source={wordLogo} />
+          <Text style={styles.heading}>
+            Login
           </Text>
-        </TouchableHighlight>
 
-        <TouchableHighlight onPress={() => Actions.home()} style={styles.homeButtonStyle}>
-          <Text style={styles.homeButtonText}>
-            Homepage
-          </Text>
-        </TouchableHighlight>
+          <TextInput
+            onChangeText={ (text)=> this.setState({email: text}) }
+            style={styles.input} placeholder="Email">
+          </TextInput>
+
+          <TextInput
+            onChangeText={ (text)=> this.setState({password: text}) }
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry={true}>
+          </TextInput>
+
+          <TouchableHighlight onPress={this.onLoginPressed.bind(this)} style={styles.buttonStyle}>
+            <Text style={styles.buttonText}>
+              Submit
+            </Text>
+          </TouchableHighlight>
+
+          <Text style={styles.error}> {this.state.errors} < /Text>
+
+          <TouchableHighlight onPress={() => Actions.home()} style={styles.homeButtonStyle}>
+            <Text style={styles.homeButtonText}>
+              Homepage
+            </Text>
+          </TouchableHighlight>
 
       </View>
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   locationContainer: {

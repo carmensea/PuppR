@@ -6,7 +6,8 @@ import { StyleSheet,
   AsyncStorage,
   View,
   Image,
-  Button
+  Button,
+  ScrollView
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { storeToken, getToken } from './token';
@@ -53,12 +54,14 @@ class Register extends Component {
         storeToken(ACCESS_TOKEN, accessToken);
         console.log("res token: " + accessToken);
         Actions.form();
+      } else {
+        let error = JSON.parse(res._bodyText).error[0];
+        this.setState({errors: error})
       }
     })
       .catch(errors => {
-        console.log(errors)
       console.log("catch errors: " + errors);
-      let formErrors = JSON.parse(errors);
+      let formErrors = JSON.parse(errors._bodyText).error;
       let errorsArray = [];
       for(let key in formErrors) {
         if(formErrors[key].length > 1) {
@@ -75,6 +78,7 @@ class Register extends Component {
   render() {
     return (
       <View style={styles.locationContainer}>
+      <ScrollView>
        <Image style={{width: 90, height: 50}} source={pawLogo} />
         <Image style={{width: 200, height: 50}} source={wordLogo} />
         <Text style={styles.heading}>
@@ -112,20 +116,26 @@ class Register extends Component {
             Homepage
           </Text>
         </TouchableHighlight>
+      </ScrollView>
       </View>
     );
   }
 }
 
 const Errors = (props) => {
+  console.log(props)
   return (
-    <View>
+    <View style={styles.errorContainer}>
     {props.errors.map((error, i) => <Text key={i} style={styles.error}>{error}</Text>)}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  errorContainer: {
+    flexDirection: "column",
+    justifyContent: "space-around",
+  },
   locationContainer: {
     paddingTop: '25%',
     alignItems: 'center',

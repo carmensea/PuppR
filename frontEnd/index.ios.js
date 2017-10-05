@@ -45,7 +45,6 @@ const frontEnd = () => (
    <Scene
      key="register"
      component={Register}
-
    />
   <Scene
     key="login"
