@@ -12,6 +12,9 @@ The PuppR project is a collaborative effort that provides a mobile interface for
  - A user can "dislike" a dog by means of a pawprint icon on left side, which eliminates the dog from the user's Pawtential Soulmates" index page.
 
 ![alt text] search.png
+![alt text] rename.png
+![alt text] search.png
+![alt text] show.png
 
 ## Motivation
 
